@@ -16,6 +16,10 @@ public class Game {
 
     public Game(){
         // initialize a new game such that each column can store cards
+        for (int i = 0; i < 4; i++) {
+            java.util.List<Card> tmpList = new ArrayList<>(42);
+            cols.add(i,tmpList);
+        }
     }
 
     public void buildDeck() {
