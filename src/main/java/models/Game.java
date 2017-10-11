@@ -13,7 +13,6 @@ public class Game {
 
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
 
-
     public Game(){
         // initialize a new game such that each column can store cards
         for (int i = 0; i < 4; i++) {
@@ -45,11 +44,16 @@ public class Game {
 
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
+        if (!cols.get(columnNumber).isEmpty())
+            removeCardFromCol(columnNumber);
     }
 
     private boolean columnHasCards(int columnNumber) {
         // check indicated column for number of cards; if no cards return false, otherwise return true
-        return false;
+        if (cols.get(columnNumber).isEmpty())
+            return false;
+        else
+            return true;
     }
 
     private Card getTopCard(int columnNumber) {
