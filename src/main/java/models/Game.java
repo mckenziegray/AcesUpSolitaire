@@ -44,7 +44,7 @@ public class Game {
 
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
-        if (!cols.get(columnNumber).isEmpty())
+        if (columnHasCards(columnNumber))
             removeCardFromCol(columnNumber);
     }
 
