@@ -62,6 +62,13 @@ public class Game {
 
 
     public void move(int columnFrom, int columnTo) {
+        if(columnHasCards(columnFrom)&&cols.get(columnTo).isEmpty()){
+            addCardToCol(columnTo, getTopCard(columnFrom));
+            removeCardFromCol(columnFrom);
+        }
+        else
+            System.out.println("Error: either the columns is empty, or the columnFrom is not empty\n");
+            //Only for server and testing, will be commented out later
         // remove the top card from the columnFrom column, add it to the columnTo column
     }
 
