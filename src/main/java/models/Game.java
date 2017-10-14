@@ -33,7 +33,7 @@ public class Game {
 
     public void shuffle() {
         // shuffles the deck so that it is random
-        Collections.shuffle(list);
+        Collections.shuffle(deck);
         //finished for working test
     }
 
