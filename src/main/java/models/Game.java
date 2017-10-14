@@ -1,5 +1,6 @@
 package models;
 
+import java.util.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -32,6 +33,8 @@ public class Game {
 
     public void shuffle() {
         // shuffles the deck so that it is random
+        Collections.shuffle(deck);
+        //finished for working test
     }
 
     public void dealFour() {
