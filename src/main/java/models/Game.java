@@ -17,8 +17,7 @@ public class Game {
     public Game(){
         // initialize a new game such that each column can store cards
         for (int i = 0; i < 4; i++) {
-            java.util.List<Card> tmpList = new ArrayList<>(42);
-            cols.add(i,tmpList);
+            cols.add(i,new ArrayList<Card>());
         }
     }
 
@@ -46,9 +45,26 @@ public class Game {
     }
 
     public void remove(int columnNumber) {
-        // remove the top card from the indicated column
-        if (columnHasCards(columnNumber))
-            removeCardFromCol(columnNumber);
+        // remove the top card from the indicated column if valid
+        if(columnHasCards(columnNumber)) {
+            Card c = getTopCard(columnNumber);
+            boolean removeCard = false;
+            for (int i = 0; i < 4; i++) {
+                if (i != columnNumber) {
+                    if (columnHasCards(i)) {
+                        Card compare = getTopCard(i);
+                        if (compare.getSuit() == c.getSuit()) {
+                            if (compare.getValue() > c.getValue()) {
+                                removeCard = true;
+                            }
+                        }
+                    }
+                }
+            }
+            if (removeCard) {
+                this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
+            }
+        }
     }
 
     private boolean columnHasCards(int columnNumber) {
@@ -65,12 +81,13 @@ public class Game {
 
 
     public void move(int columnFrom, int columnTo) {
+        // checks and moves card if valid, not necessary depending on client views
         if(columnHasCards(columnFrom)&&cols.get(columnTo).isEmpty()){
             addCardToCol(columnTo, getTopCard(columnFrom));
             removeCardFromCol(columnFrom);
         }
         else
-            System.out.println("Error: either the columns is empty, or the columnFrom is not empty\n");
+            System.out.println("Error: either the columns is empty, or the columnFrom is not empty");
             //Only for server and testing, will be commented out later
         // remove the top card from the columnFrom column, add it to the columnTo column
     }
