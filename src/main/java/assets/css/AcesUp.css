@@ -16,3 +16,65 @@ font-weight: bold;
 width: 100px;
 background-color:#F0F0F0;
 }
+
+
+.area_1 { 
+    float: left;
+    height: 600px;
+    width: 684px;
+    border: 1px solid gray;
+}
+
+.area_2 { 
+    float: left;
+    height: 600px;
+    width: 36px;
+    border: 1px solid gray;
+}
+
+.area_3 { 
+    float: left;
+    height: 600px;
+    width: 180px;
+    border: 1px solid gray;
+}
+
+.main_div {
+    margin: 0;
+    padding: 0;
+    border: 1px solid gray;
+    width: 684px;
+    height: 575px;
+    background-color: green;
+    text-align: center;
+}
+
+.help_div {
+    margin: 0;
+    padding: 0;
+    border: 1px solid gray;
+    height: 23px;
+    width: 684px;
+    background-color: red;
+    text-align: centered;
+}
+
+.dead_div {
+    margin: 0;
+    padding: 0;
+    border: 1px solid gray;
+    width: 36px;
+    height: 600px;
+    background-color: black;
+    text-align: center;
+}
+
+.side_div {
+    margin: 0;
+    padding: 0;
+    border: 1px solid gray;    
+    width: 180px;
+    height: 600px;
+    background-color: purple;
+    text-align: center;
+}
