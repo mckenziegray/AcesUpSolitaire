@@ -18,21 +18,21 @@ background-color:#F0F0F0;
 }
 
 
-.play_area {
+.game_help_area {
     float: left;
     height: 600px;
     width: 684px;
     border: 1px solid gray;
 }
 
-.area_2 { 
+.dead_div {
     float: left;
     height: 600px;
     width: 36px;
     border: 1px solid gray;
 }
 
-.area_3 { 
+.side_div {
     float: left;
     height: 600px;
     width: 180px;
