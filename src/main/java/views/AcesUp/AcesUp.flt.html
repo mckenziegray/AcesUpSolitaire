@@ -12,7 +12,6 @@
 <!--------MY CODE ABOVE----->        
         <table>
           <!--these can be changed as necessary, i'm not sure but jquery might only care about the id of each button so maybe they can be moved onto the table cols???-->
-          <BR>Remove from: <button id="Remove1">Column1</button><button id="Remove2">Column2</button><button id="Remove3">Column3</button><button id="Remove4">Column4</button>
           <BR>Move from column <input type="text" id="from_col"  /> to <input type="text" id="to_col"  /> <button id="moveButton">Move</button
           <tr class="title">
             <td>Column0</td>
@@ -178,18 +177,19 @@ dataType:"json",
 }
 
 
-$("#Remove1").click(function(){
+$("table").on('click',"#c0",function(){
     removeCard(0);
 });
-$("#Remove2").click(function(){
+$("table").on('click',"#c1",function(){
     removeCard(1);
 });
-$("#Remove3").click(function(){
+$("table").on('click',"#c2",function(){
     removeCard(2);
 });
-$("#Remove4").click(function(){
+$("table").on('click',"#c3",function(){
     removeCard(3);
 });
+
 
 
 $("#moveButton").click(function(){
