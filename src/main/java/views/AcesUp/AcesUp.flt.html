@@ -14,10 +14,10 @@
           <!--these can be changed as necessary, i'm not sure but jquery might only care about the id of each button so maybe they can be moved onto the table cols???-->
           <BR>Move from column <input type="text" id="from_col"  /> to <input type="text" id="to_col"  /> <button id="moveButton">Move</button
           <tr class="title">
-            <td>Column0</td>
-            <td >Column1</td>
-            <td >Column2</td>
-            <td >Column3</td>
+            <td>Column 1</td>
+            <td>Column 2</td>
+            <td>Column 3</td>
+            <td>Column 4</td>
           </tr>
           <tr>
             <td class="columnOfCards" id="c0">
@@ -96,19 +96,18 @@
         </table>
       </div>
     <div class="help_div">
-      GAME INFO:       Num of moves: 2                Possible moves:  XXXXX
+      <span>Alert messages here</span>
     </div>
   </div>
     <div class="dead_div">
 
     </div>
     <div class="side_div">
-      <div id="deck">
-        <!--deck pile-->
-        <button id="dealButton">Deal</button>
+      <div class="deck" id="dealButton">
+          <span>Deck</span>
       </div>
-      <div id="discard">
-        <!--Discard pile-->
+      <div class="discard">
+          <span>Discard</span>
       </div>
     </div>
   </div>
@@ -122,23 +121,45 @@ console.log(game);
 $( '.columnOfCards .cardLocation' ).html("");
 
     $.each(game.cols[0], function( key, val ) {
-        $( '#c0 .l'+key ).html(val.value + val.suit);
+        $( '#c0 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     });
 
  $.each(game.cols[1], function( key, val ) {
-        $( '#c1 .l'+key ).html(val.value + val.suit);
+        $( '#c1 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     });
 
  $.each(game.cols[2], function( key, val ) {
-        $( '#c2 .l'+key ).html(val.value + val.suit);
+        $( '#c2 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     });
 
  $.each(game.cols[3], function( key, val ) {
-        $( '#c3 .l'+key ).html(val.value + val.suit);
+        $( '#c3 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     });
+}
 
+function get_suit(suit){
+    if(suit == "Hearts"){
+        return '<span style="color:red">&#9829;</span>';
+    } else if(suit == "Spades"){
+        return '<span style="color:black">&#9824;</span>';
+    } else if(suit == "Diamonds"){
+        return '<span style="color:red">&#9830;</span>';
+    } else if(suit == "Clubs"){
+        return '<span style="color:black">&#9827;</span>';
+    }
+}
 
-
+function get_value(val){
+    if (val<=10)
+        return val;
+    else if (val == 11)
+        return 'Jack';
+    else if (val == 12)
+        return 'Queen';
+    else if (val == 13)
+        return 'King';
+    else if (val == 14)
+        return 'Ace';
 }
 
 // Calls ApplicationController.gameGet()
@@ -207,6 +228,13 @@ $.ajax({
 });
 });
 
+var replacementRegexp = /(.*Hearts\s+)(.+)(\s+at.*)/m;
+
+$("table td:contains('Hearts')").each(
+
+    function(index, element) {
+        $(element).html($(element).html().replace(replacementRegexp, '$1Hello$3'));
+    });
 
 </script>
 
