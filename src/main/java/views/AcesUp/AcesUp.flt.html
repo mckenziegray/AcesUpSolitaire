@@ -228,13 +228,6 @@ $.ajax({
 });
 });
 
-var replacementRegexp = /(.*Hearts\s+)(.+)(\s+at.*)/m;
-
-$("table td:contains('Hearts')").each(
-
-    function(index, element) {
-        $(element).html($(element).html().replace(replacementRegexp, '$1Hello$3'));
-    });
 
 </script>
 
