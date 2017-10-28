@@ -101,11 +101,10 @@
 
     </div>
     <div class="side_div">
-      <div class="deck" id="dealButton "align="center">
-        <input type="image" src="/assets/cardback.jpg" id="dealButton"/>
+      <div class="deck" id="dealButton" align="center">
+        <input type="image" src="/assets/cardback.jpg"/>
 	     </div>
 	  <div class="discard" align="center">
-        <img id="discardPile" src="/assets/cardback.jpg" />
     </div>
     </div>
   </div>
@@ -133,6 +132,7 @@ $( '.columnOfCards .cardLocation' ).html("");
  $.each(game.cols[3], function( key, val ) {
         $( '#c3 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     });
+
 }
 
 function get_suit(suit){
@@ -160,6 +160,14 @@ function get_value(val){
         return 'Ace';
 }
 
+//deletes dealbutton card back when deck is empty
+$('#dealButton').click(function(){
+    if (game.deck.length == 0) {
+        $(this).html('');
+    }
+});
+
+
 // Calls ApplicationController.gameGet()
 $.getJSON("http://localhost:8080/game", function( data ) {
 display(data);
@@ -180,15 +188,22 @@ $.ajax({
 });
 });
 
-
+var flag = true;
 function removeCard(colNumber){
+    //add discard cardback to discard pile
+    if(flag == true){
+        $('.discard').append('<img src="/assets/cardback.jpg" id="discardPile"/>');
+        flag = false;
+    }
 $.ajax({
 type: "POST",
 url: "/removeCard/"+colNumber,
 data: JSON.stringify(game),
-success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
-game = data;
-display(data);},
+success: function(data, status){
+    console.log("Data: " + data + "\nStatus: " + status);
+    game = data;
+    display(data);
+    },
 contentType:"application/json; charset=utf-8",
 dataType:"json",
 });
