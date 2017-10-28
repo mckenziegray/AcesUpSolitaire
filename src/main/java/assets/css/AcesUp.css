@@ -19,30 +19,27 @@ background-color:#F0F0F0;
 
 
 .game_help_area {
+    position: relative;
     float: left;
     height: 600px;
     width: 684px;
-    border: 1px solid gray;
 }
 
 .dead_div {
     float: left;
     height: 600px;
     width: 36px;
-    border: 1px solid gray;
 }
 
 .side_div {
     float: left;
     height: 600px;
     width: 180px;
-    border: 1px solid gray;
 }
 
 .main_div {
     margin: 0;
     padding: 0;
-    border: 1px solid gray;
     width: 684px;
     height: 575px;
     background-color: green;
@@ -50,30 +47,31 @@ background-color:#F0F0F0;
 }
 
 .help_div {
+    position: absolute;
+    bottom: 0;
     margin: 0;
-    padding: 0;
-    border: 1px solid gray;
-    height: 23px;
-    width: 684px;
-    background-color: red;
-    text-align: centered;
+    padding: 3px;
+    border-top: 1px solid black;
+    height: 20px;
+    width: 678px;
+    background-color: rgba(255,100,100,170);
+    text-align: center;
 }
 
 .dead_div {
     margin: 0;
     padding: 0;
-    border: 1px solid gray;
     width: 36px;
     height: 600px;
     background-color: black;
     text-align: center;
+    z-index: 10000;
 }
 
 .side_div {
     position: relative;
     margin: 0;
     padding: 0;
-    border: 1px solid gray;    
     width: 180px;
     height: 600px;
     background-color: purple;
@@ -87,8 +85,6 @@ background-color:#F0F0F0;
     margin: 0 auto;
     width: 100px;
     height: 150px;
-    /*border: 3px solid black;
-    text-align: center;*/
 }
 
 .discard {
@@ -98,6 +94,33 @@ background-color:#F0F0F0;
     margin: 0 auto;
     width: 100px;
     height: 150px;
-    /*border: 3px solid black;
-    text-align: center;*/
+}
+
+    bottom: 0;
+    margin: 20px 36x;
+    width: 100px;
+    height: 150px;
+    border: 3px solid black;
+    text-align: center;
+}
+
+.num_of_moves {
+  float: left;
+  height: 20px;
+  width: 228px;
+
+}
+
+.last_move {
+  float: left;
+  height: 20px;
+  width: 228px;
+
+}
+
+.player_name {
+  float: right;
+  height: 20px;
+  width: 228px;
+
 }
