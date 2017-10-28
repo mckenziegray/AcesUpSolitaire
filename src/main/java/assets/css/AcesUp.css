@@ -103,24 +103,3 @@ background-color:#F0F0F0;
     border: 3px solid black;
     text-align: center;
 }
-
-.num_of_moves {
-  float: left;
-  height: 20px;
-  width: 228px;
-
-}
-
-.last_move {
-  float: left;
-  height: 20px;
-  width: 228px;
-
-}
-
-.player_name {
-  float: right;
-  height: 20px;
-  width: 228px;
-
-}
