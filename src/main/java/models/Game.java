@@ -82,14 +82,14 @@ public class Game {
 
     public void move(int columnFrom, int columnTo) {
         // checks and moves card if valid, not necessary depending on client views
-        if(columnHasCards(columnFrom)&&cols.get(columnTo).isEmpty()){
+        // Added: The cald can only be moved into an empty space if the card is an Ace
+        if(columnHasCards(columnFrom)&&cols.get(columnTo).isEmpty()&&cols.get(columnFrom).get(cols.get(columnFrom).size() - 1).value == 14){
             addCardToCol(columnTo, getTopCard(columnFrom));
             removeCardFromCol(columnFrom);
         }
         else
             System.out.println("Error: either the columns is empty, or the columnFrom is not empty");
             //Only for server and testing, will be commented out later
-        // remove the top card from the columnFrom column, add it to the columnTo column
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {
