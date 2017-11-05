@@ -10,14 +10,13 @@ import java.io.Serializable;
  */
 
 public class Card implements Serializable {
-    public final int value;
-    public final Suit suit;
+    private final int value;
+    private final Suit suit;
 
     @JsonCreator
     public Card(@JsonProperty("value") int value, @JsonProperty("suit") Suit suit) {
         this.value = value;
         this.suit = suit;
-
     }
 
     public Suit getSuit() {

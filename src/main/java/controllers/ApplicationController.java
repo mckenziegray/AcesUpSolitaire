@@ -33,7 +33,6 @@ public class ApplicationController {
     
     public Result gameGet(){
         Game g = new Game();
-        g.dealFour();
 
         return Results.json().render(g);
     }
@@ -51,7 +50,7 @@ public class ApplicationController {
     }
 
     public Result moveCard(Context context, @PathParam("columnFrom") int colFrom, @PathParam("columnTo") int colTo, Game g){
-        g.move(colFrom,colTo);
+        g.move(colFrom);
         return Results.json().render(g);
     }
 

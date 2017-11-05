@@ -23,6 +23,8 @@ public class Deck {
         return tempCard;
     }
 
+    public boolean hasCards() { return !this.deck.isEmpty(); }
+
     private void shuffle() {
         Collections.shuffle(deck);
     }
