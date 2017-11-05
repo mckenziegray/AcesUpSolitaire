@@ -30,26 +30,6 @@ public class Game {
     }
 
     public void remove(int colNumber) {
-//        // remove the top card from the indicated column if valid
-//        if(columnHasCards(columnNumber)) {
-//            Card c = getTopCard(columnNumber);
-//            boolean removeCard = false;
-//            for (int i = 0; i < 4; i++) {
-//                if (i != columnNumber) {
-//                    if (columnHasCards(i)) {
-//                        Card compare = getTopCard(i);
-//                        if (compare.getSuit() == c.getSuit()) {
-//                            if (compare.getValue() > c.getValue()) {
-//                                removeCard = true;
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//            if (removeCard) {
-//                this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
-//            }
-//        }
         if( table.colHasCards(colNumber) ) {
             if( table.canRemove(colNumber)) {
                 table.removeFromCol(colNumber);
