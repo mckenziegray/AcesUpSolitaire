@@ -161,11 +161,12 @@ function get_value(val){
 }
 
 //deletes dealbutton card back when deck is empty
-//$('#dealButton').click(function(){
-//    if (game.deck.length == 0) {
-//        $(this).html('');
-//    }
-//});
+$('#dealButton').click(function(){
+    //this is gross and ugly and should be replaced by a function call later
+    if (game.deck.deck.length == 0) {
+        $(this).html('');
+    }
+});
 
 
 // Calls ApplicationController.gameGet()

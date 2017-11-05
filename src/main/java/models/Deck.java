@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Deck {
 
-    private java.util.List<Card> deck = new ArrayList<>();
+    public java.util.List<Card> deck = new ArrayList<>();
 
     public Deck() {
         for(int i = 2; i < 15; i++){
