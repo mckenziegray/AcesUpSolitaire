@@ -10,7 +10,7 @@ import java.util.Random;
  */
 public class Game {
 
-    public java.util.List<Card> deck = new ArrayList<>();
+    private Deck deck = new Deck();
 
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
 
@@ -21,26 +21,10 @@ public class Game {
         }
     }
 
-    public void buildDeck() {
-        for(int i = 2; i < 15; i++){
-            deck.add(new Card(i,Suit.Clubs));
-            deck.add(new Card(i,Suit.Hearts));
-            deck.add(new Card(i,Suit.Diamonds));
-            deck.add(new Card(i,Suit.Spades));
-        }
-    }
-
-    public void shuffle() {
-        // shuffles the deck so that it is random
-        Collections.shuffle(deck);
-        //finished for working test
-    }
-
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
         for (int i = 0; i < 4; i++) {
-            addCardToCol(i,deck.get(deck.size()-1));
-            deck.remove(deck.size()-1);
+            addCardToCol(i,deck.takeTopCard());
         }
     }
 
