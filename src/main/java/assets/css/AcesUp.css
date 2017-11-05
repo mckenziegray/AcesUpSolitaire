@@ -80,8 +80,8 @@ background-color:#F0F0F0;
 
 .deck {
     position: absolute;
-    top: 50;
-	left: 40;
+    top: 50px;
+	left: 40px;
     margin: 0 auto;
     width: 100px;
     height: 150px;
@@ -89,17 +89,9 @@ background-color:#F0F0F0;
 
 .discard {
     position: absolute;
-    bottom: 50;
-	left: 40;
+    bottom: 50px;
+	left: 40px;
     margin: 0 auto;
     width: 100px;
     height: 150px;
-}
-
-    bottom: 0;
-    margin: 20px 36x;
-    width: 100px;
-    height: 150px;
-    border: 3px solid black;
-    text-align: center;
 }

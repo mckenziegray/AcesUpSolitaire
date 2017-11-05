@@ -1,102 +1,50 @@
 package models;
 
-import java.util.*;
+import javafx.scene.control.Tab;
+
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
 
 /**
  * Assignment 1: Each of the blank methods below require implementation to get AcesUp to build/run
  */
 public class Game {
 
-    public java.util.List<Card> deck = new ArrayList<>();
+    public Deck deck = new Deck();
 
-    public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
+    public Tableau table = new Tableau();
+
+    //Used to give feedback to the user if an action is not possible
+    public String feedbackText = "";
 
     public Game(){
-        // initialize a new game such that each column can store cards
-        for (int i = 0; i < 4; i++) {
-            cols.add(i,new ArrayList<Card>());
-        }
-    }
-
-    public void buildDeck() {
-        for(int i = 2; i < 15; i++){
-            deck.add(new Card(i,Suit.Clubs));
-            deck.add(new Card(i,Suit.Hearts));
-            deck.add(new Card(i,Suit.Diamonds));
-            deck.add(new Card(i,Suit.Spades));
-        }
-    }
-
-    public void shuffle() {
-        // shuffles the deck so that it is random
-        Collections.shuffle(deck);
-        //finished for working test
+        this.dealFour();
     }
 
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
-        for (int i = 0; i < 4; i++) {
-            addCardToCol(i,deck.get(deck.size()-1));
-            deck.remove(deck.size()-1);
+        if (deck.hasCards()){
+            for (int i = 0; i < 4; i++) {
+                table.addCardToCol(i,deck.takeTopCard());
+            }
         }
     }
 
-    public void remove(int columnNumber) {
-        // remove the top card from the indicated column if valid
-        if(columnHasCards(columnNumber)) {
-            Card c = getTopCard(columnNumber);
-            boolean removeCard = false;
-            for (int i = 0; i < 4; i++) {
-                if (i != columnNumber) {
-                    if (columnHasCards(i)) {
-                        Card compare = getTopCard(i);
-                        if (compare.getSuit() == c.getSuit()) {
-                            if (compare.getValue() > c.getValue()) {
-                                removeCard = true;
-                            }
-                        }
-                    }
+    public void remove(int colNumber) {
+        if( table.colHasCards(colNumber) ) {
+            if( table.canRemove(colNumber)) {
+                table.removeFromCol(colNumber);
+            }
+        }
+    }
+
+    public void move(int colFrom) {
+        if( table.colHasCards(colFrom)) {
+            if( table.getTopCardValue(colFrom) == 14){
+                int num = table.existEmptyCol();
+                if( num != -1 ) {
+                    table.moveFromToCol(colFrom, num);
                 }
             }
-            if (removeCard) {
-                this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
-            }
         }
-    }
-
-    private boolean columnHasCards(int columnNumber) {
-        // check indicated column for number of cards; if no cards return false, otherwise return true
-        if (cols.get(columnNumber).isEmpty())
-            return false;
-        else
-            return true;
-    }
-
-    private Card getTopCard(int columnNumber) {
-        return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
-    }
-
-
-    public void move(int columnFrom, int columnTo) {
-        // checks and moves card if valid, not necessary depending on client views
-        // Added: The cald can only be moved into an empty space if the card is an Ace
-        if(columnHasCards(columnFrom)&&cols.get(columnTo).isEmpty()&&cols.get(columnFrom).get(cols.get(columnFrom).size() - 1).value == 14){
-            addCardToCol(columnTo, getTopCard(columnFrom));
-            removeCardFromCol(columnFrom);
-        }
-        else
-            System.out.println("Error: either the columns is empty, or the columnFrom is not empty");
-            //Only for server and testing, will be commented out later
-    }
-
-    private void addCardToCol(int columnTo, Card cardToMove) {
-        cols.get(columnTo).add(cardToMove);
-    }
-
-    private void removeCardFromCol(int colFrom) {
-        this.cols.get(colFrom).remove(this.cols.get(colFrom).size()-1);
     }
 }

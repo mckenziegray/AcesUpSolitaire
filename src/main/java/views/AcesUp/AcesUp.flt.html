@@ -117,19 +117,19 @@ console.log(game);
 
 $( '.columnOfCards .cardLocation' ).html("");
 
-    $.each(game.cols[0], function( key, val ) {
+    $.each(game.table.columns[0], function( key, val ) {
         $( '#c0 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     });
 
- $.each(game.cols[1], function( key, val ) {
+ $.each(game.table.columns[1], function( key, val ) {
         $( '#c1 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     });
 
- $.each(game.cols[2], function( key, val ) {
+ $.each(game.table.columns[2], function( key, val ) {
         $( '#c2 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     });
 
- $.each(game.cols[3], function( key, val ) {
+ $.each(game.table.columns[3], function( key, val ) {
         $( '#c3 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     });
 
@@ -162,7 +162,8 @@ function get_value(val){
 
 //deletes dealbutton card back when deck is empty
 $('#dealButton').click(function(){
-    if (game.deck.length == 0) {
+    //this is gross and ugly and should be replaced by a function call later
+    if (game.deck.deck.length == 0) {
         $(this).html('');
     }
 });
