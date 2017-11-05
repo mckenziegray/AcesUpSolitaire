@@ -27,7 +27,7 @@ public class Deck {
         Collections.shuffle(deck);
     }
 
-    private Card getTopCar(){
+    private Card getTopCard(){
         return this.deck.get(deck.size() - 1);
     }
 

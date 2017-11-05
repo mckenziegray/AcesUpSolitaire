@@ -1,16 +1,13 @@
 package models;
 
-import java.util.*;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
 
 /**
  * Assignment 1: Each of the blank methods below require implementation to get AcesUp to build/run
  */
 public class Game {
 
-    private Deck deck = new Deck();
+    public Deck deck = new Deck();
 
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
 
