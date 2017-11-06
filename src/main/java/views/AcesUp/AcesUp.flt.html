@@ -133,6 +133,10 @@ $( '.columnOfCards .cardLocation' ).html("");
         $( '#c3 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     });
 
+ //removes deck cardback
+ if (game.deck.deck.length == 0) {
+     $('#dealButton').html('');
+ }
 }
 
 function get_suit(suit){
@@ -159,15 +163,6 @@ function get_value(val){
     else if (val == 14)
         return 'Ace';
 }
-
-//deletes dealbutton card back when deck is empty
-$('#dealButton').click(function(){
-    //this is gross and ugly and should be replaced by a function call later
-    if (game.deck.deck.length == 0) {
-        $(this).html('');
-    }
-});
-
 
 // Calls ApplicationController.gameGet()
 $.getJSON("http://localhost:8080/game", function( data ) {
