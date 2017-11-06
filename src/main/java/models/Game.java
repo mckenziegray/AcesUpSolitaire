@@ -1,9 +1,5 @@
 package models;
 
-import javafx.scene.control.Tab;
-
-import java.util.ArrayList;
-
 /**
  * Assignment 1: Each of the blank methods below require implementation to get AcesUp to build/run
  */
