@@ -93,9 +93,14 @@
           </tr>
         </table>
       </div>
-    <div class="help_div">
-      <span>Alert messages here</span>
-    </div>
+      <div>
+        <div class="score_div">
+          <span id="scoreText"></span>
+        </div>
+        <div class="alert_div">
+          <span id="feedbackText"></span>
+        </div>
+      </div>
   </div>
     <div class="dead_div">
 
@@ -112,6 +117,7 @@
 
 var game;
 
+var flag = true;
 function display(game) {
 console.log(game);
 
@@ -133,9 +139,17 @@ $( '.columnOfCards .cardLocation' ).html("");
         $( '#c3 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     });
 
+ $('#scoreText').html('Score: ' + game.score);
+ $('#feedbackText').html(game.feedbackText);
+
  //removes deck cardback
  if (game.deck.deck.length == 0) {
      $('#dealButton').html('');
+ }
+ //add discard cardback to discard pile
+ if(flag == true && game.score > 0){
+     $('.discard').append('<img src="/assets/cardback.jpg" id="discardPile"/>');
+     flag = false;
  }
 }
 
@@ -184,13 +198,7 @@ $.ajax({
 });
 });
 
-var flag = true;
 function removeCard(colNumber){
-    //add discard cardback to discard pile
-    if(flag == true){
-        $('.discard').append('<img src="/assets/cardback.jpg" id="discardPile"/>');
-        flag = false;
-    }
 $.ajax({
 type: "POST",
 url: "/removeCard/"+colNumber,
@@ -203,7 +211,6 @@ success: function(data, status){
 contentType:"application/json; charset=utf-8",
 dataType:"json",
 });
-
 }
 
 
