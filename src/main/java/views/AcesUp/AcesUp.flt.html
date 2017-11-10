@@ -93,9 +93,14 @@
           </tr>
         </table>
       </div>
-    <div class="help_div">
-      <span>Alert messages here</span>
-    </div>
+      <div>
+        <div class="score_div">
+          <span id="scoreText"></span>
+        </div>
+        <div class="alert_div">
+          <span id="feedbackText"></span>
+        </div>
+      </div>
   </div>
     <div class="dead_div">
 
@@ -132,6 +137,9 @@ $( '.columnOfCards .cardLocation' ).html("");
  $.each(game.table.columns[3], function( key, val ) {
         $( '#c3 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     });
+
+ $('#scoreText').html('Score: ' + game.score);
+ $('#feedbackText').html(game.feedbackText);
 
  //removes deck cardback
  if (game.deck.deck.length == 0) {

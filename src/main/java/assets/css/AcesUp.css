@@ -46,7 +46,7 @@ background-color:#F0F0F0;
     text-align: center;
 }
 
-.help_div {
+.info_div {
     position: absolute;
     bottom: 0;
     margin: 0;
@@ -54,6 +54,22 @@ background-color:#F0F0F0;
     border-top: 1px solid black;
     height: 20px;
     width: 678px;
+    background-color: rgba(255,100,100,170);
+    text-align: center;
+}
+
+.score_div {
+    float: left;
+    height: 25px;
+    width: 171px;
+    background-color: rgba(255,100,100,170);
+    text-align: center;
+}
+
+.alert_div {
+    float: left;
+    height: 25px;
+    width: 513px;
     background-color: rgba(255,100,100,170);
     text-align: center;
 }
