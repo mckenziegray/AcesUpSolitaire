@@ -1,6 +1,6 @@
 package models;
 
-        import java.io.Serializable;
+import java.io.Serializable;
 
 public enum Suit implements Serializable {
     //Includes a special suit just for Jokers
