@@ -25,7 +25,7 @@ public class Deck {
 
     public boolean hasCards() { return !this.deck.isEmpty(); }
 
-    private void shuffle() {
+    protected void shuffle() {
         Collections.shuffle(deck);
     }
 
