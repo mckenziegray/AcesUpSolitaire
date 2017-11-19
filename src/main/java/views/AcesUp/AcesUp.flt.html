@@ -93,13 +93,15 @@
           </tr>
         </table>
       </div>
-      <div>
+      <div class="info_div">
         <div class="score_div">
           <span id="scoreText"></span>
         </div>
         <div class="alert_div">
           <span id="feedbackText"></span>
         </div>
+
+          <button type="button" id="resetButton">RESET</button>
       </div>
   </div>
     <div class="dead_div">
@@ -244,6 +246,18 @@ $.ajax({
 });
 });
 
+$('#resetButton').click(function() {
+    $.ajax({
+        type: "POST",
+        url: "/resetGame",
+        data: JSON.stringify(game),
+        success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+            game = data;
+            display(data);},
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",
+    });
+});
 
 </script>
 

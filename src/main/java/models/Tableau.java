@@ -17,9 +17,11 @@ public class Tableau {
     public boolean canRemove(int index) {
         Card card = this.getTopCard(index);
         for(int i = 0; i < 4; i++) {
-            Card toCompare = getTopCard(i);
-            if (toCompare.getValue() > card.getValue() && toCompare.getSuit() == card.getSuit()) {
-                return true;
+            if(colHasCards(i)) {
+                Card toCompare = getTopCard(i);
+                if (toCompare.getValue() > card.getValue() && toCompare.getSuit() == card.getSuit()) {
+                    return true;
+                }
             }
         }
         return false;

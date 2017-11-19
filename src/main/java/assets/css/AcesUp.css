@@ -60,18 +60,17 @@ background-color:#F0F0F0;
 
 .score_div {
     float: left;
-    height: 25px;
-    width: 171px;
-    background-color: rgba(255,100,100,170);
     text-align: center;
 }
 
 .alert_div {
     float: left;
-    height: 25px;
-    width: 513px;
-    background-color: rgba(255,100,100,170);
+    width: 50%;
     text-align: center;
+}
+
+#resetButton {
+    float: right;
 }
 
 .dead_div {
