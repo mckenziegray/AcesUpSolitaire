@@ -11,6 +11,8 @@ public class Game {
 
     public int score = 0;
 
+    public char deckType = 'E';
+
     public Game(){
         this.dealFour();
     }
@@ -55,5 +57,18 @@ public class Game {
         }
         else
             feedbackText = "No card to move!";
+    }
+
+    //deckType = 'E' for english and 'S' for spanish cards
+    public void reset() {
+        this.score = 0;
+        this.feedbackText = "";
+        this.table = new Tableau();
+        if (this.deckType == 'E'){
+            this.deck = new Deck();
+        } else {
+            this.deck = new SpanishDeck();
+        }
+        this.dealFour();
     }
 }
