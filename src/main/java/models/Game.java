@@ -19,12 +19,12 @@ public class Game {
 
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
-        if (deck.hasCards()) {
             for (int i = 0; i < 4; i++) {
-                table.addCardToCol(i, deck.takeTopCard());
+                if (deck.hasCards()) {
+                    table.addCardToCol(i, deck.takeTopCard());
+                }
             }
             feedbackText = "";
-        }
     }
 
     public void remove(int colNumber) {
@@ -42,8 +42,9 @@ public class Game {
     }
 
     public void move(int colFrom) {
-        if( table.colHasCards(colFrom)) {
-            if( table.getTopCardValue(colFrom) == 14){
+        if( table.colHasCards(colFrom)){
+            if( (deckType == 'E' && table.getTopCardValue(colFrom) == 14)
+                    || (deckType == 'S' && table.getTopCardValue(colFrom) == 13)){
                 int num = table.existEmptyCol();
                 if( num != -1 ) {
                     table.moveFromToCol(colFrom, num);
