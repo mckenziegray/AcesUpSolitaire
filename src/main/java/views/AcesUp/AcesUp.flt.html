@@ -119,36 +119,176 @@
 			</div>
 		</div>
 	</div>
+    <script>
+	    
+/** Changes I would suggest *************************************************************	    
+    	var game;
+	var flag = true;
 
-<script>
+	function display(game) {
+	    console.log(game);
 
-var game;
+	    $( '.columnOfCards .cardLocation' ).html("");
+	    $.each(game.table.columns[0], function( key, val ) {
+       	        $( '#c0 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
+    	    });
 
+ 	    $.each(game.table.columns[1], function( key, val ) {
+          	$( '#c1 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
+    	    });
+
+	    $.each(game.table.columns[2], function( key, val ) {
+        	$( '#c2 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
+    	    });
+
+	    $.each(game.table.columns[3], function( key, val ) {
+        	$( '#c3 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
+    	    });
+
+	    $('#scoreText').html('Score: ' + game.score);
+	    $('#feedbackText').html(game.feedbackText);
+
+ 	    //removes deck cardback
+ 	    if (game.deck.deck.length == 0) {
+ 	        $('#dealButton').html('');
+ 	    }
+ 	    //add discard cardback to discard pile
+ 	    if(flag == true && game.score > 0){
+ 	        $('.discard').append('<img src="/assets/cardback.jpg" id="discardPile"/>');
+ 	        flag = false;
+ 	    }
+	}
+
+	function get_suit(suit){
+    	    if(suit == "Hearts"){
+        	return '<span style="color:red">&#9829;</span>';
+    	    } else if(suit == "Spades"){
+        	return '<span style="color:black">&#9824;</span>';
+    	    } else if(suit == "Diamonds"){
+        	return '<span style="color:red">&#9830;</span>';
+            } else if(suit == "Clubs"){
+        	return '<span style="color:black">&#9827;</span>';
+    	    }
+	}
+
+	function get_value(val){
+    	    if (val<=10)
+        	return val;
+    	    else if (val == 11)
+        	return 'Jack';
+    	    else if (val == 12)
+        	return 'Queen';
+    	    else if (val == 13)
+        	return 'King';
+    	    else if (val == 14)
+        	return 'Ace';
+	}
+
+	// Calls ApplicationController.gameGet()
+	$.getJSON("http://localhost:8080/game", function( data ) {
+	    display(data);
+	    game = data;
+	});
+
+
+	$("#dealButton").click(function(){
+	    $.ajax({
+		type: "POST",
+		url: "/dealGame",
+  		data: JSON.stringify(game),
+  		success: function(data, status){
+		    console.log("Data: " + data + "\nStatus: " + status);
+        	    game = data;
+        	    display(data);
+		},
+  		contentType:"application/json; charset=utf-8",
+  		dataType:"json",
+	    });
+	});
+
+	function removeCard(colNumber){
+	    $.ajax({
+		type: "POST",
+		url: "/removeCard/"+colNumber,
+		data: JSON.stringify(game),
+		success: function(data, status){
+		    console.log("Data: " + data + "\nStatus: " + status);
+		    game = data;
+		    display(data);
+		},
+		contentType:"application/json; charset=utf-8",
+		dataType:"json",
+	    });
+	}
+
+
+	$("table").on('click',"#c0",function(){
+	    removeCard(0);
+	});
+	$("table").on('click',"#c1",function(){
+	    removeCard(1);
+	});
+	$("table").on('click',"#c2",function(){
+	    removeCard(2);
+	});
+	$("table").on('click',"#c3",function(){
+  	    removeCard(3);
+	});
+
+
+
+	$("#moveButton").click(function(){
+	    var colFrom = $("#from_col").val();
+	    var colTo = $("#to_col").val();
+	    $.ajax({
+	        type: "POST",
+		url: "/moveCard/"+colFrom+"/"+colTo,
+		data: JSON.stringify(game),
+		success: function(data, status){
+		    console.log("Data: " + data + "\nStatus: " + status);
+	            game = data;
+        	    display(data);
+		},
+ 	 	contentType:"application/json; charset=utf-8",
+ 		dataType:"json",
+		});
+	});
+
+	$('#resetButton').click(function() {
+	    $.ajax({
+                type: "POST",
+        	url: "/resetGame",
+         	data: JSON.stringify(game),
+        	success: function(data, status){
+		    console.log("Data: " + data + "\nStatus: " + status);
+            	    game = data;
+                    display(data);
+		},
+        	contentType:"application/json; charset=utf-8",
+        	dataType:"json",
+    		});
+	});
+*/
+//START of old code ********************************************************************
+	var game;
 var flag = true;
 function display(game) {
 console.log(game);
-
 $( '.columnOfCards .cardLocation' ).html("");
-
     $.each(game.table.columns[0], function( key, val ) {
         $( '#c0 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     });
-
  $.each(game.table.columns[1], function( key, val ) {
         $( '#c1 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     });
-
  $.each(game.table.columns[2], function( key, val ) {
         $( '#c2 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     });
-
  $.each(game.table.columns[3], function( key, val ) {
         $( '#c3 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     });
-
  $('#scoreText').html('Score: ' + game.score);
  $('#feedbackText').html(game.feedbackText);
-
  //removes deck cardback
  if (game.deck.deck.length == 0) {
      $('#dealButton').html('');
@@ -159,7 +299,6 @@ $( '.columnOfCards .cardLocation' ).html("");
      flag = false;
  }
 }
-
 function get_suit(suit){
     if(suit == "Hearts"){
         return '<span style="color:red">&#9829;</span>';
@@ -171,7 +310,6 @@ function get_suit(suit){
         return '<span style="color:black">&#9827;</span>';
     }
 }
-
 function get_value(val){
     if (val<=10)
         return val;
@@ -184,14 +322,11 @@ function get_value(val){
     else if (val == 14)
         return 'Ace';
 }
-
 // Calls ApplicationController.gameGet()
 $.getJSON("http://localhost:8080/game", function( data ) {
 display(data);
 game = data;
 });
-
-
 $("#dealButton").click(function(){
 $.ajax({
   type: "POST",
@@ -204,7 +339,6 @@ $.ajax({
   dataType:"json",
 });
 });
-
 function removeCard(colNumber){
 $.ajax({
 type: "POST",
@@ -219,8 +353,6 @@ contentType:"application/json; charset=utf-8",
 dataType:"json",
 });
 }
-
-
 $("table").on('click',"#c0",function(){
     removeCard(0);
 });
@@ -233,9 +365,6 @@ $("table").on('click',"#c2",function(){
 $("table").on('click',"#c3",function(){
     removeCard(3);
 });
-
-
-
 $("#moveButton").click(function(){
 var colFrom = $("#from_col").val();
 var colTo = $("#to_col").val();
@@ -250,7 +379,6 @@ $.ajax({
   dataType:"json",
 });
 });
-
 $('#resetButton').click(function() {
     $.ajax({
         type: "POST",
@@ -262,9 +390,10 @@ $('#resetButton').click(function() {
         contentType:"application/json; charset=utf-8",
         dataType:"json",
     });
-});
+});    
 
-</script>
-
+	    
+// END of old code ****************************************************************	    
+    </script>
 </body>
 </html>
