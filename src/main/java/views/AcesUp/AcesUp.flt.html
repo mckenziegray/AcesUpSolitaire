@@ -20,10 +20,10 @@
 					<button id="moveButton">Move</button>-->
 
 					<tr class="title">
-						<td><button class="moveButton">Move</button></td>
-						<td><button class="moveButton">Move</button></td>
-						<td><button class="moveButton">Move</button></td>
-						<td><button class="moveButton">Move</button></td>
+						<td><button class="moveButton" id="move0">Move</button></td>
+						<td><button class="moveButton" id="move1">Move</button></td>
+						<td><button class="moveButton" id="move2">Move</button></td>
+						<td><button class="moveButton" id="move3">Move</button></td>
 					</tr>
 					<tr>
 						<td class="columnOfCards" id="c0">
@@ -269,8 +269,8 @@
     		});
 	});
 */
-//START of old code ********************************************************************
-	var game;
+//START of old code *****************************************************************
+var game;
 var flag = true;
 function display(game) {
 console.log(game);
@@ -365,9 +365,12 @@ $("table").on('click',"#c2",function(){
 $("table").on('click',"#c3",function(){
     removeCard(3);
 });
-$("#moveButton").click(function(){
-var colFrom = $("#from_col").val();
-var colTo = $("#to_col").val();
+
+$("#move0").click(function(){
+var colFrom = 0;
+//colTo doesn't actually do anything, but taking it out breaks something
+//	I don't understand json/ajax
+var colTo = 0;
 $.ajax({
   type: "POST",
   url: "/moveCard/"+colFrom+"/"+colTo,
@@ -379,6 +382,49 @@ $.ajax({
   dataType:"json",
 });
 });
+$("#move1").click(function(){
+    var colFrom = 1;
+    var colTo = 0;
+    $.ajax({
+        type: "POST",
+        url: "/moveCard/"+colFrom+"/"+colTo,
+        data: JSON.stringify(game),
+        success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+            game = data;
+            display(data);},
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",
+    });
+});
+$("#move2").click(function(){
+    var colFrom = 2;
+    var colTo = 0;
+    $.ajax({
+        type: "POST",
+        url: "/moveCard/"+colFrom+"/"+colTo,
+        data: JSON.stringify(game),
+        success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+            game = data;
+            display(data);},
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",
+    });
+});
+$("#move3").click(function(){
+    var colFrom = 3;
+    var colTo = 0;
+    $.ajax({
+        type: "POST",
+        url: "/moveCard/"+colFrom+"/"+colTo,
+        data: JSON.stringify(game),
+        success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+            game = data;
+            display(data);},
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",
+    });
+});
+
 $('#resetButton').click(function() {
     $.ajax({
         type: "POST",
