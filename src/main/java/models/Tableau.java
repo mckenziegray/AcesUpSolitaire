@@ -37,6 +37,17 @@ public class Tableau {
         return -1;
     }
 
+    //Check if a Joker is available
+    //If it is, return its column; otherwise, return -1
+    public int existJoker() {
+        for(int i = 0; i < 4; i++) {
+            if(this.getTopCardValue(i) == 0) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public void moveFromToCol(int fromCol, int toCol) {
         this.addCardToCol(toCol,this.takeTopCard(fromCol));
     }
