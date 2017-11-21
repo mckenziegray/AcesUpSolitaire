@@ -1,129 +1,112 @@
-.application
-{
-	height: 600px;
-	width: 900px;
-	border: 1px solid black
+tr{
+width:500px;
 }
 
-	.game_help_area 
-	{
-		position: relative;
-		float: left;
-		height: 600px;
-		width: 684px;
-		background yellow;
-	}
+td{
+width:100px;
+height:20px;
+text-align:center;
+}
 
-		.main_div 
-		{
-						padding: 10px;
-			margin: 0;
-			//padding: 0;
-			width: 684px;
-			height: 575px;
-			background-color: green;
-			text-align: center;
-			box-sizing: border-box
-		}
-		
-			//Move buttons will be held here
-			button{
-			
-			}
-			button.moveButton{
-				background-color: yellow;
-				width: 80px;
-				border-radius: 5px ;
-			}
-			
-			.title
-			{
-				font-weight: bold;
-			}
-			
-			tr
-			{
-				width: 684px;
-				height: 33px;
-			}
-			
-				td
-				{
-					height: 20px;
-					width: 200px;
-					text-align:center;
-					//border: 1px solid black;
-				}
+.title{
+font-weight: bold;
+}
 
-					.cardLocation
-					{
-						border-radius: 5px ;
-						width: 200px;
-						background-color:#F0F0F0;
-						border: 1px solid black;
-					}
-			
+.cardLocation{
+width: 100px;
+background-color:#F0F0F0;
+}
 
-		.info_div 
-		{
-			position: absolute;
-			bottom: 0;
-			margin: 0;
-			padding: 3px;
-			//border-top: 1px solid black;
-			height: 20px;
-			width: 678px;
-			background-color: rgba(255,100,100,170);
-			text-align: center;
-		}
-			.score_div 
-			{
-				float: left;
-				text-align: center;
-			}
 
-			.alert_div 
-			{
-				float: left;
-				width: 50%;
-				text-align: center;
-			}
-			
-			#resetButton 
-			{
-				float: right;
-			}
+.game_help_area {
+    position: relative;
+    float: left;
+    height: 600px;
+    width: 684px;
+}
 
-			
-	.side_div 
-	{
-		position: relative;
-		margin: 0;
-		padding: 0;
-		width: 216px;
-		height: 600px;
-		background-color: purple;
-		text-align: center;
-		float: left;
-	}
+.dead_div {
+    float: left;
+    height: 600px;
+    width: 36px;
+}
 
-		.deck 
-		{
-			position: absolute;
-		top: 50px;
-		left: 40px;
-		margin: 0 auto;
-		width: 100px;
-		height: 150px;
-		}
-		
-		
-		.discard 
-		{
-		position: absolute;
-		bottom: 50px;
-		left: 40px;
-		margin: 0 auto;
-		width: 100px;
-		height: 150px;
-		}
+.side_div {
+    float: left;
+    height: 600px;
+    width: 180px;
+}
+
+.main_div {
+    margin: 0;
+    padding: 0;
+    width: 684px;
+    height: 575px;
+    background-color: green;
+    text-align: center;
+}
+
+.info_div {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    padding: 3px;
+    border-top: 1px solid black;
+    height: 20px;
+    width: 678px;
+    background-color: rgba(255,100,100,170);
+    text-align: center;
+}
+
+.score_div {
+    float: left;
+    text-align: center;
+}
+
+.alert_div {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+#resetButton {
+    float: right;
+}
+
+.dead_div {
+    margin: 0;
+    padding: 0;
+    width: 36px;
+    height: 600px;
+    background-color: black;
+    text-align: center;
+    z-index: 10000;
+}
+
+.side_div {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 180px;
+    height: 600px;
+    background-color: purple;
+    text-align: center;
+}
+
+.deck {
+    position: absolute;
+    top: 50px;
+	left: 40px;
+    margin: 0 auto;
+    width: 100px;
+    height: 150px;
+}
+
+.discard {
+    position: absolute;
+    bottom: 50px;
+	left: 40px;
+    margin: 0 auto;
+    width: 100px;
+    height: 150px;
+}
