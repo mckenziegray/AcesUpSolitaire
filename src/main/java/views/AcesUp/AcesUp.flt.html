@@ -113,7 +113,7 @@
 		</div>
 		<div class="side_div">
 			<div class="deck" id="dealButton" align="center">
-				<input type="image" src="/assets/cardback.jpg"/>
+				<input type="image" src="/assets/cardback.jpg" alt="Deal"/>
 			</div>
 			<div class="discard" align="center">
 			</div>
@@ -308,6 +308,14 @@ function get_suit(suit){
         return '<span style="color:red">&#9830;</span>';
     } else if(suit == "Clubs"){
         return '<span style="color:black">&#9827;</span>';
+    } else if(suit == "Copas"){
+        return '<img src="/assets/cup.png" alt="Copas" width="10" height="10"/>';
+	} else if(suit == "Espadas"){
+        return '<img src="/assets/sword.png" alt="Espadas" width="10" height="10"/>';
+    } else if(suit == "Oros"){
+        return '<img src="/assets/coin.png" alt="Oros" width="10" height="10"/>';
+    } else if(suit == "Bastos"){
+        return '<img src="/assets/club.png" alt="Bastos" width="10" height="10"/>';
     }
 }
 function get_value(val){

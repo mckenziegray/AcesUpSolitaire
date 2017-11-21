@@ -29,12 +29,12 @@ public class Game {
 
     public void remove(int colNumber) {
         if( table.colHasCards(colNumber) ) {
+            int jokerCol = table.existJoker();
             if (table.canRemove(colNumber) || table.getTopCardValue(colNumber) == 0) {
                 table.removeFromCol(colNumber);
                 feedbackText = "";
                 score++;
             }
-            int jokerCol = table.existJoker();
             else if (jokerCol != -1)
             {
                 table.removeFromCol(colNumber);
