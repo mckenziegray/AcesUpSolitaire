@@ -122,7 +122,7 @@
 
 	    $( '.columnOfCards .cardLocation' ).html("");
 	    $.each(game.table.columns[0], function( key, val ) {
-       	        $( '#c0 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
+            $( '#c0 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     	    });
 
  	    $.each(game.table.columns[1], function( key, val ) {
@@ -172,16 +172,30 @@
 	}
 
 	function get_value(val){
-    	    if (val<=10)
-        	return val;
-    	    else if (val == 11)
-        	return 'Jack';
-    	    else if (val == 12)
-        	return 'Queen';
-    	    else if (val == 13)
-        	return 'King';
-    	    else if (val == 14)
-        	return 'Ace';
+        if (game.deckType == 'S') {
+            if (val == 13)
+                return 'Ace';
+            else if (val == 12)
+                return 'Rey';
+            else if (val == 11)
+                return 'Caballo';
+            else if (val == 10)
+                return 'Sota';
+            else
+                return val;
+        }
+        else {
+            if (val <= 10)
+                return val;
+            else if (val == 11)
+                return 'Jack';
+            else if (val == 12)
+                return 'Queen';
+            else if (val == 13)
+                return 'King';
+            else if (val == 14)
+                return 'Ace';
+        }
 	}
 
 	// Calls ApplicationController.gameGet()
