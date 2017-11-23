@@ -49,7 +49,7 @@ public class ApplicationController {
         return Results.json().render(g);
     }
 
-    public Result moveCard(Context context, @PathParam("columnFrom") int colFrom, @PathParam("columnTo") int colTo, Game g){
+    public Result moveCard(Context context, @PathParam("columnFrom") int colFrom, Game g){
         g.move(colFrom);
         return Results.json().render(g);
     }
