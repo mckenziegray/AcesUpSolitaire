@@ -3,37 +3,33 @@
 }
 
 .application {
+    position: relative;
     height: 600px;
     width: 900px;
     border: 1px solid black;
 }
 
 .game_help_area {
-    position: relative;
-    float: left;
+    position: absolute;
+    left: 0px;
     height: 600px;
     width: 684px;
-    background: yellow;
 }
 
 .main_div {
-    padding: 5px;
-    margin: 0;
+    padding: 7px;
     width: 684px;
     height: 575px;
     background-color: green;
-    text-align: center;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
 .moveButton {
     background-color: yellow;
     width: 80px;
+    border: none;
     border-radius: 5px;
-    font-size: 15px;
-}
-
-.title {
+    font-size: 17px;
     font-weight: bold;
 }
 
@@ -43,14 +39,12 @@ tr {
 }
 
 td {
-    height: 20px;
     width: 200px;
     text-align: center;
 }
 
 .cardLocation {
     border-radius: 6px;
-    width: 200px;
     background-color: #F0F0F0;
     border: 1px solid black;
     font-size: 20px;
@@ -59,7 +53,6 @@ td {
 .info_div {
     position: absolute;
     bottom: 0;
-    margin: 0;
     padding: 3px;
     border-top: 1px solid black;
     height: 20px;
@@ -86,29 +79,22 @@ td {
     border: none;
     border-radius: 3px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
     font-size: 16px;
-    margin: auto;
 }
 
 .side_div {
-    position: relative;
-    margin: 0;
-    padding: 0;
+    position: absolute;
+    right: 0;
     width: 216px;
     height: 600px;
     background-color: purple;
-    text-align: center;
-    float: left;
+    border-left: 1px solid black;
 }
 
 .deck {
     position: absolute;
     top: 50px;
-    left: 55px;
-    margin: auto;
-    padding: 0;
+    left: 57px;
     height: 150px;
     width: 100px;
 }
@@ -116,8 +102,7 @@ td {
 .discard {
     position: absolute;
     bottom: 50px;
-    left: 55px;
-    margin: auto;
+    left: 57px;
     width: 100px;
     height: 150px;
 }
