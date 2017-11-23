@@ -1,112 +1,113 @@
-tr{
-width:500px;
+* {
+    font-family: 'Roboto', sans-serif;
 }
 
-td{
-width:100px;
-height:20px;
-text-align:center;
+.application {
+    position: relative;
+    height: 600px;
+    width: 900px;
+    border: 1px solid black;
 }
-
-.title{
-font-weight: bold;
-}
-
-.cardLocation{
-width: 100px;
-background-color:#F0F0F0;
-}
-
 
 .game_help_area {
-    position: relative;
-    float: left;
+    position: absolute;
+    left: 0px;
     height: 600px;
     width: 684px;
-}
-
-.dead_div {
-    float: left;
-    height: 600px;
-    width: 36px;
-}
-
-.side_div {
-    float: left;
-    height: 600px;
-    width: 180px;
 }
 
 .main_div {
-    margin: 0;
-    padding: 0;
+    padding: 7px;
     width: 684px;
     height: 575px;
     background-color: green;
+    box-sizing: border-box;
+}
+
+.moveButton {
+    background-color: yellow;
+    width: 80px;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+tr {
+    width: 684px;
+    height: 35px;
+}
+
+td {
+    width: 200px;
     text-align: center;
+}
+
+.cardLocation {
+    border-radius: 6px;
+    background-color: #F0F0F0;
+    border: 1px solid black;
+    font-size: 20px;
 }
 
 .info_div {
     position: absolute;
     bottom: 0;
-    margin: 0;
     padding: 3px;
     border-top: 1px solid black;
     height: 20px;
     width: 678px;
-    background-color: rgba(255,100,100,170);
+    background-color: rgba(255, 100, 100, 170);
     text-align: center;
 }
 
 .score_div {
-    float: left;
+    position: absolute;
+    left: 0;
     text-align: center;
+    font-size: 18px;
 }
 
 .alert_div {
-    float: left;
-    width: 50%;
     text-align: center;
+    margin: 0 auto;
 }
 
 #resetButton {
-    float: right;
-}
-
-.dead_div {
-    margin: 0;
-    padding: 0;
-    width: 36px;
-    height: 600px;
-    background-color: black;
+    position: absolute;
+    right: 5px;
+    border: none;
+    border-radius: 3px;
     text-align: center;
-    z-index: 10000;
+    font-size: 16px;
 }
 
 .side_div {
-    position: relative;
-    margin: 0;
-    padding: 0;
-    width: 180px;
+    position: absolute;
+    right: 0;
+    width: 216px;
     height: 600px;
     background-color: purple;
-    text-align: center;
+    border-left: 1px solid black;
 }
 
 .deck {
     position: absolute;
     top: 50px;
-	left: 40px;
-    margin: 0 auto;
-    width: 100px;
+    left: 57px;
     height: 150px;
+    width: 100px;
 }
 
 .discard {
     position: absolute;
     bottom: 50px;
-	left: 40px;
-    margin: 0 auto;
+    left: 57px;
     width: 100px;
     height: 150px;
+}
+
+.site-title {
+    width: 900px;
+    text-align: center;
 }

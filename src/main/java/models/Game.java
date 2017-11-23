@@ -13,9 +13,7 @@ public class Game {
 
     public char deckType = 'E';
 
-    public Game(){
-        this.dealFour();
-    }
+    public Game(){ this.dealFour(); }
 
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
