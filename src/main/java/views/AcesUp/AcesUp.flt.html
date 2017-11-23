@@ -1,12 +1,9 @@
-<html>
-
 <div class="site-title">
     <h1>Aces Up</h1>
 </div>
 
 <link href="/assets/css/AcesUp.css" rel="stylesheet">
 <script type="text/javascript" src="/assets/webjars/jquery/2.1.3/jquery.js"></script>
-
 
 <body>
 	<div class="application">
@@ -162,26 +159,6 @@
         	return '<span style="color:black">&#9827;</span>';
     	    }
 	}
-
-	function get_value(val){
-    	    if (val<=10)
-        	return val;
-    	    else if (val == 11)
-        	return 'Jack';
-    	    else if (val == 12)
-        	return 'Queen';
-    	    else if (val == 13)
-        	return 'King';
-    	    else if (val == 14)
-        	return 'Ace';
-	}
-
-	// Calls ApplicationController.gameGet()
-	$.getJSON("http://localhost:8080/game", function( data ) {
-	    display(data);
-	    game = data;
-	});
-
 
 	$("#dealButton").click(function(){
 	    $.ajax({
