@@ -27,14 +27,28 @@ public class Tableau {
         return false;
     }
 
-    //returns the index of an empty column or -1 if none exist
-    public int existEmptyCol() {
+    /*returns -1 if no open column is available, -2 if no aces to move,
+        and if there is an empty column and an ace return in int 0-3 for the index of the
+        empty column.
+    */
+    public int canMove() {
+        boolean existAce = false;
+        int emptyIndex = -1;
         for(int i = 0; i < 4; i++) {
-            if(this.columns.get(i).isEmpty()) {
-                return i;
+            if (!this.colHasCards(i)) {
+                emptyIndex = i;
+            } else {
+                if (this.getTopCardValue(i) == 14) {
+                    existAce = true;
+                }
             }
         }
-        return -1;
+        if (emptyIndex == -1) {
+            return -1;
+        } else if (!existAce) {
+            return -2;
+        }
+        return emptyIndex;
     }
 
     public void moveFromToCol(int fromCol, int toCol) {
