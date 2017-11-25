@@ -71,7 +71,7 @@ public class Game {
         this.dealFour();
     }
 
-    //checks if the player has lost, meaning there are no cards in the deck and no removes possible
+    //checks if the player has lost, meaning there are no cards in the deck and no removes or moves possible
     public void hasPlayerLost() {
         if (!deck.hasCards()) {
             for (int i = 0; i < 4; i++){
