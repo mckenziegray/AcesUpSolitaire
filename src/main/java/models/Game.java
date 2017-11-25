@@ -17,6 +17,7 @@ public class Game {
 
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
+        // if the deck has less than 4 cards, deal only what is left
             for (int i = 0; i < 4; i++) {
                 if (deck.hasCards()) {
                     table.addCardToCol(i, deck.takeTopCard());
@@ -33,6 +34,7 @@ public class Game {
                 feedbackText = "";
                 score++;
             }
+            // if there is a joker, remove both cards
             else if (jokerCol != -1)
             {
                 table.removeFromCol(colNumber);

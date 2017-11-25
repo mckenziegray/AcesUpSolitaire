@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
 <body>
-
 <div class="application">
     <div class="game_help_area">
         <div class="main_div">
@@ -291,12 +290,6 @@
             }
 	}
 
-	// Calls ApplicationController.gameGet()
-	$.getJSON("http://localhost:8080/game", function( data ) {
-	    display(data);
-	    game = data;
-	});
-
     function get_value(val){
         if (game.deckType == 'S') {
             if (val == 13)
@@ -323,6 +316,12 @@
                 return 'Ace';
         }
     }
+
+	// Calls ApplicationController.gameGet()
+	$.getJSON("http://localhost:8080/game", function( data ) {
+	    display(data);
+	    game = data;
+	});
 
 
 	$("#dealButton").click(function(){
