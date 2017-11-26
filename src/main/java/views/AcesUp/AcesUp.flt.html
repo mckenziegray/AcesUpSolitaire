@@ -275,10 +275,10 @@
  	    }
 
  	    //check player win/lose
-        if (game.playerLost) {
+        if (game.score == 48 || (game.deckType == 'S' && game.score == 46)) {
             $('.modal-title').html('You\'ve Lost!');
             $('.modal').show()
-        } else if (game.score == 48 || (game.deckType == 'S' && game.score == 46)) {
+        } else if (game.playerLost) {
             $('.modal-title').html('You\'ve WON!');
             $('.modal').show()
         }
