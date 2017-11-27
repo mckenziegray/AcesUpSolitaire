@@ -27,14 +27,39 @@ public class Tableau {
         return false;
     }
 
-    //returns the index of an empty column or -1 if none exist
-    public int existEmptyCol() {
-        for(int i = 0; i < 4; i++) {
-            if(this.columns.get(i).isEmpty()) {
-                return i;
+    private boolean isSpanishDeck() {
+        for (int i = 0; i < 4; i++) {
+            if (colHasCards(i)) {
+                Suit suit = getTopCardSuit(i);
+                if (suit == Suit.Copas || suit == Suit.Bastos || suit == Suit.Espadas || suit == Suit.Oros)
+                    return true;
             }
         }
-        return -1;
+        return false;
+    }
+
+    /*returns -1 if no open column is available, -2 if no aces to move,
+        and if there is an empty column and an ace return in int 0-3 for the index of the
+        empty column.
+    */
+    public int canMove() {
+        boolean existAce = false;
+        int emptyIndex = -1;
+        for(int i = 0; i < 4; i++) {
+            if (!this.colHasCards(i)) {
+                emptyIndex = i;
+            } else {
+                if ((!this.isSpanishDeck() && this.getTopCardValue(i) == 14) || (this.isSpanishDeck() && this.getTopCardValue(i) == 13)) {
+                    existAce = true;
+                }
+            }
+        }
+        if (emptyIndex == -1) {
+            return -1;
+        } else if (!existAce) {
+            return -2;
+        }
+        return emptyIndex;
     }
 
     //Check if a Joker is available

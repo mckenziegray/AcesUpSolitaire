@@ -13,6 +13,8 @@ public class Game {
 
     public char deckType = 'E';
 
+    public boolean playerLost = false;
+
     public Game(){ this.dealFour(); }
 
     public void dealFour() {
@@ -50,22 +52,19 @@ public class Game {
     }
 
     public void move(int colFrom) {
-        if( table.colHasCards(colFrom)){
-            if( (deckType == 'E' && table.getTopCardValue(colFrom) == 14)
-                    || (deckType == 'S' && table.getTopCardValue(colFrom) == 13)){
-                int num = table.existEmptyCol();
-                if( num != -1 ) {
-                    table.moveFromToCol(colFrom, num);
-                    feedbackText = "";
-                }
-                else
-                    feedbackText = "There are no empty slots to move to!";
-            }
-            else
+        if( table.colHasCards(colFrom)) {
+            int num = table.canMove();
+            if (num >= 0) {
+                table.moveFromToCol(colFrom, num);
+                feedbackText = "";
+            } else if (num == -1) {
+                feedbackText = "There are no empty slots to move to!";
+            } else if (num == -2) {
                 feedbackText = "Only Aces can be moved!";
-        }
-        else
+            }
+        } else {
             feedbackText = "No card to move!";
+        }
     }
 
     //deckType = 'E' for english and 'S' for spanish cards
@@ -73,6 +72,7 @@ public class Game {
         this.score = 0;
         this.feedbackText = "";
         this.table = new Tableau();
+        this.playerLost = false;
         if (this.deckType == 'E'){
             this.deck = new Deck();
         } else {
@@ -80,4 +80,20 @@ public class Game {
         }
         this.dealFour();
     }
+
+    //checks if the player has lost, meaning there are no cards in the deck and no removes or moves possible
+    public void hasPlayerLost() {
+        if (!deck.hasCards()) {
+            for (int i = 0; i < 4; i++){
+                if (table.canRemove(i)) {
+                    return;
+                }
+            }
+            if (table.canMove() >= 0) {
+                return;
+            }
+            this.playerLost = true;
+        }
+    }
+
 }

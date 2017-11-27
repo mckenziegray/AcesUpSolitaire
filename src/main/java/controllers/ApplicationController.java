@@ -41,16 +41,19 @@ public class ApplicationController {
         if(context.getRequestPath().contains("deal")){
             g.dealFour();
         }
+        g.hasPlayerLost();
         return Results.json().render(g);
     }
 
     public Result removeCard(Context context, @PathParam("column") int colNumber, Game g){
         g.remove(colNumber);
+        g.hasPlayerLost();
         return Results.json().render(g);
     }
 
     public Result moveCard(Context context, @PathParam("columnFrom") int colFrom, Game g){
         g.move(colFrom);
+        g.hasPlayerLost();
         return Results.json().render(g);
     }
 
