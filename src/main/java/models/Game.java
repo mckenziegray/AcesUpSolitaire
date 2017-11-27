@@ -15,6 +15,8 @@ public class Game {
 
     public boolean playerLost = false;
 
+    public boolean playerWon = false;
+
     public Game(){ this.dealFour(); }
 
     public void dealFour() {
@@ -96,4 +98,27 @@ public class Game {
         }
     }
 
+    /*
+        Win conditions:
+           1) Deck is empty
+           2) Each column has no more than 1 card left
+           3) The only cards remaining are Aces
+     */
+    public void hasPlayerWon()
+    {
+        if (deck.hasCards())
+            return;
+        for (int i = 0; i < 4; i++) {
+            if (table.cardCount(i) != 1)
+                return;
+            else {
+                if (deckType == 'S' && table.getTopCardValue(i) != 13)
+                    return;
+                else if (table.getTopCardValue(i) != 14)
+                    return;
+            }
+        }
+
+        playerWon = true;
+    }
 }

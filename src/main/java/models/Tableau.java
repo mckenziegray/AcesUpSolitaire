@@ -85,6 +85,8 @@ public class Tableau {
         return !columns.get(colNumber).isEmpty();
     }
 
+    public int cardCount(int colNumber) { return columns.get(colNumber).size(); }
+
     public void removeFromCol(int colNumber) {
         columns.get(colNumber).remove(columns.get(colNumber).size()-1);
     }
