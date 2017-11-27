@@ -49,7 +49,7 @@ public class Tableau {
             if (!this.colHasCards(i)) {
                 emptyIndex = i;
             } else {
-                if ((this.isSpanishDeck() && this.getTopCardValue(i) == 14) || (!this.isSpanishDeck() && this.getTopCardValue(i) == 13)) {
+                if ((!this.isSpanishDeck() && this.getTopCardValue(i) == 14) || (this.isSpanishDeck() && this.getTopCardValue(i) == 13)) {
                     existAce = true;
                 }
             }
