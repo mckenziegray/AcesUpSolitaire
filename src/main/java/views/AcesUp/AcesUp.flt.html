@@ -218,7 +218,7 @@
             <div class="score_div">
                 <span id="scoreText"></span>
             </div>
-            <button type="button" id="resetButton">RESET</button>
+            <button type="button" class="resetButton">RESET</button>
             <div class="alert_div">
                 <span id="feedbackText"></span>
             </div>
@@ -231,6 +231,11 @@
         <div class="discard" align="center">
         </div>
     </div>
+    <div class="modal modal-backdrop"></div>
+    <div class="modal modal-window">
+        <h2 class="modal-title"></h2>
+        <div class="modal-button"><button type="button" class="resetButton">RESET</button></div>
+    </div>
 </div>
 <script>
 	var game;
@@ -241,7 +246,7 @@
 
 	    $( '.columnOfCards .cardLocation' ).html("");
 	    $.each(game.table.columns[0], function( key, val ) {
-       	        $( '#c0 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
+            $( '#c0 .l'+key ).html(get_value(val.value) + get_suit(val.suit));
     	    });
 
  	    $.each(game.table.columns[1], function( key, val ) {
@@ -268,7 +273,17 @@
  	        $('.discard').append('<img src="/assets/cardback.jpg" id="discardPile"/>');
  	        flag = false;
  	    }
+
+ 	    //check player win/lose
+        if (game.score == 48 || (game.deckType == 'S' && game.score == 46)) {
+            $('.modal-title').html('You\'ve Lost!');
+            $('.modal').show()
+        } else if (game.playerLost) {
+            $('.modal-title').html('You\'ve WON!');
+            $('.modal').show()
+        }
 	}
+
 
 	function get_suit(suit){
     	    if(suit == "Hearts"){
@@ -364,7 +379,7 @@
         });
     }
 
-	$('#resetButton').click(function() {
+	$('.resetButton').click(function() {
 	    $.ajax({
                 type: "POST",
         	url: "/resetGame",
@@ -376,8 +391,12 @@
 		},
         	contentType:"application/json; charset=utf-8",
         	dataType:"json",
-    		});
+        });
+
+	    $('.modal').hide();
 	});
+
+
 </script>
 </body>
 </html>
