@@ -17,7 +17,10 @@ public class Game {
 
     public boolean playerWon = false;
 
-    public Game(){ this.dealFour(); }
+    public Game(){
+        this.deck.buildDeck();
+        this.deck.shuffle();
+        this.dealFour(); }
 
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
@@ -80,6 +83,8 @@ public class Game {
         } else {
             this.deck = new SpanishDeck();
         }
+        this.deck.buildDeck();
+        this.deck.shuffle();
         this.dealFour();
     }
 
