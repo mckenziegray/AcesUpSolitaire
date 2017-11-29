@@ -275,10 +275,10 @@
  	    }
 
  	    //check player win/lose
-        if (game.score == 48 || (game.deckType == 'S' && game.score == 46)) {
-            $('.modal-title').html('You\'ve Lost!');
+        if (game.playerLost) {
+            $('.modal-title').html('Game over!');
             $('.modal').show()
-        } else if (game.playerLost) {
+        } else if (game.playerWon) {
             $('.modal-title').html('You\'ve WON!');
             $('.modal').show()
         }
@@ -294,27 +294,54 @@
         	return '<span style="color:red">&#9830;</span>';
             } else if(suit == "Clubs"){
         	return '<span style="color:black">&#9827;</span>';
-    	    }
+    	    } else if(suit == "Copas"){
+                return '<img src="/assets/cup.png" alt="Copas" width="10" height="10"/>';
+            } else if(suit == "Espadas"){
+                return '<img src="/assets/sword.png" alt="Espadas" width="10" height="10"/>';
+            } else if(suit == "Oros"){
+                return '<img src="/assets/coin.png" alt="Oros" width="10" height="10"/>';
+            } else if(suit == "Bastos"){
+                return '<img src="/assets/club.png" alt="Bastos" width="10" height="10"/>';
+            }
+            else if (suit == "JOKER"){
+                return '';
+            }
 	}
 
-    function get_value(val) {
-        if (val <= 10)
-            return val;
-        else if (val == 11)
-            return 'Jack';
-        else if (val == 12)
-            return 'Queen';
-        else if (val == 13)
-            return 'King';
-        else if (val == 14)
-            return 'Ace';
+    function get_value(val){
+        if (game.deckType == 'S') {
+            if (val == 13)
+                return 'Ace';
+            else if (val == 12)
+                return 'Rey';
+            else if (val == 11)
+                return 'Caballo';
+            else if (val == 10)
+                return 'Sota';
+            else if (val == 0)
+                return 'Joker';
+            else
+                return val;
+        }
+        else {
+            if (val <= 10)
+                return val;
+            else if (val == 11)
+                return 'Jack';
+            else if (val == 12)
+                return 'Queen';
+            else if (val == 13)
+                return 'King';
+            else if (val == 14)
+                return 'Ace';
+        }
     }
 
-    // Calls ApplicationController.gameGet()
-    $.getJSON("http://localhost:8080/game", function (data) {
-        display(data);
+	// Calls ApplicationController.gameGet()
+	$.getJSON("http://localhost:8080/game", function( data ) {
         game = data;
-    });
+        display(data);
+	});
 
 
 	$("#dealButton").click(function(){

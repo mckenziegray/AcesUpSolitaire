@@ -15,24 +15,39 @@ public class Game {
 
     public boolean playerLost = false;
 
-    public Game(){ this.dealFour(); }
+    public boolean playerWon = false;
+
+    public Game(){
+        this.deck.buildDeck();
+        this.deck.shuffle();
+        this.dealFour(); }
 
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
-        if (deck.hasCards()) {
+        // if the deck has less than 4 cards, deal only what is left
             for (int i = 0; i < 4; i++) {
-                table.addCardToCol(i, deck.takeTopCard());
+                if (deck.hasCards()) {
+                    table.addCardToCol(i, deck.takeTopCard());
+                }
             }
             feedbackText = "";
-        }
     }
 
     public void remove(int colNumber) {
         if( table.colHasCards(colNumber) ) {
-            if (table.canRemove(colNumber)) {
+            int jokerCol = table.existJoker();
+            if (table.canRemove(colNumber) || table.getTopCardValue(colNumber) == 0) {
                 table.removeFromCol(colNumber);
                 feedbackText = "";
                 score++;
+            }
+            // if there is a joker, remove both cards
+            else if (jokerCol != -1)
+            {
+                table.removeFromCol(colNumber);
+                table.removeFromCol(jokerCol);
+                feedbackText = "Joker used!";
+                score += 2;
             }
             else
                 feedbackText = "That card can't be removed!";
@@ -68,6 +83,8 @@ public class Game {
         } else {
             this.deck = new SpanishDeck();
         }
+        this.deck.buildDeck();
+        this.deck.shuffle();
         this.dealFour();
     }
 
@@ -86,4 +103,27 @@ public class Game {
         }
     }
 
+    /*
+        Win conditions:
+           1) Deck is empty
+           2) Each column has no more than 1 card left
+           3) The only cards remaining are Aces
+     */
+    public void hasPlayerWon()
+    {
+        if (deck.hasCards())
+            return;
+        for (int i = 0; i < 4; i++) {
+            if (table.cardCount(i) != 1)
+                return;
+            else {
+                if (deckType == 'S' && table.getTopCardValue(i) != 13)
+                    return;
+                else if (table.getTopCardValue(i) != 14)
+                    return;
+            }
+        }
+
+        playerWon = true;
+    }
 }

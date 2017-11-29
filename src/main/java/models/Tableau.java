@@ -27,6 +27,17 @@ public class Tableau {
         return false;
     }
 
+    private boolean isSpanishDeck() {
+        for (int i = 0; i < 4; i++) {
+            if (colHasCards(i)) {
+                Suit suit = getTopCardSuit(i);
+                if (suit == Suit.Copas || suit == Suit.Bastos || suit == Suit.Espadas || suit == Suit.Oros)
+                    return true;
+            }
+        }
+        return false;
+    }
+
     /*returns -1 if no open column is available, -2 if no aces to move,
         and if there is an empty column and an ace return in int 0-3 for the index of the
         empty column.
@@ -38,7 +49,7 @@ public class Tableau {
             if (!this.colHasCards(i)) {
                 emptyIndex = i;
             } else {
-                if (this.getTopCardValue(i) == 14) {
+                if ((!this.isSpanishDeck() && this.getTopCardValue(i) == 14) || (this.isSpanishDeck() && this.getTopCardValue(i) == 13)) {
                     existAce = true;
                 }
             }
@@ -49,6 +60,17 @@ public class Tableau {
             return -2;
         }
         return emptyIndex;
+    }
+
+    //Check if a Joker is available
+    //If it is, return its column; otherwise, return -1
+    public int existJoker() {
+        for(int i = 0; i < 4; i++) {
+            if(this.getTopCardValue(i) == 0) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void moveFromToCol(int fromCol, int toCol) {
@@ -62,6 +84,8 @@ public class Tableau {
     public boolean colHasCards(int colNumber) {
         return !columns.get(colNumber).isEmpty();
     }
+
+    public int cardCount(int colNumber) { return columns.get(colNumber).size(); }
 
     public void removeFromCol(int colNumber) {
         columns.get(colNumber).remove(columns.get(colNumber).size()-1);
