@@ -303,6 +303,9 @@
             } else if(suit == "Bastos"){
                 return '<img src="/assets/club.png" alt="Bastos" width="10" height="10"/>';
             }
+            else if (suit == "JOKER"){
+                return '';
+            }
 	}
 
     function get_value(val){
@@ -315,6 +318,8 @@
                 return 'Caballo';
             else if (val == 10)
                 return 'Sota';
+            else if (val == 0)
+                return 'Joker';
             else
                 return val;
         }
