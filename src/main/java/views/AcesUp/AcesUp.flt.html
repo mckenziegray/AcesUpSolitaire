@@ -373,11 +373,11 @@
 		    var select = "#c"+colNumber;
 		    if (game.feedbackText != "" && game.feedbackText != "Joker used!") {
 		        console.log(select);
-                $(select).toggleClass("redBackground");
-                setTimeout(function () {
-                    $(select).toggleClass("redBackground");
-                }, 90);
-            }
+                	$(select).toggleClass("redBackground");
+                	setTimeout(function () {
+                    	    $(select).toggleClass("redBackground");
+                	}, 90);
+            	    }
 		},
 		contentType:"application/json; charset=utf-8",
 		dataType:"json",
