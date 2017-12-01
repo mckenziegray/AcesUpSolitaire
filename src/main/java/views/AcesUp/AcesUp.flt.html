@@ -415,7 +415,7 @@
 
 	$('.resetButton').click(function() {
 	    $.ajax({
-                type: "POST",
+            type: "POST",
         	url: "/resetGame",
          	data: JSON.stringify(game),
         	success: function(data, status){
@@ -424,7 +424,7 @@
                     display(data);
 		},
         	contentType:"application/json; charset=utf-8",
-        	dataType:"json",
+        	dataType:"json"
         });
 	    $('.modal').hide();
 	});

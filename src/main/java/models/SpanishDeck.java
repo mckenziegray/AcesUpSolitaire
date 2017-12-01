@@ -7,6 +7,7 @@ public class SpanishDeck extends Deck {
 
     public SpanishDeck() {}
 
+    @Override
     public void buildDeck() {
         //Create 48 cards, 12 of each suit - Aces now have a value of 13 instead of 14
         for (int i = 2; i < 14; i++) {
