@@ -370,6 +370,13 @@
 		    console.log("Data: " + data + "\nStatus: " + status);
 		    game = data;
 		    display(data);
+		    var select = "#c"+colNumber;
+		    if (game.feedbackText != "" && game.feedbackText != "Joker used!") {
+                	$(select).toggleClass("redBackground");
+                	setTimeout(function () {
+                    	    $(select).toggleClass("redBackground");
+                	}, 90);
+            	    }
 		},
 		contentType:"application/json; charset=utf-8",
 		dataType:"json",
@@ -419,7 +426,6 @@
         	contentType:"application/json; charset=utf-8",
         	dataType:"json",
         });
-
 	    $('.modal').hide();
 	});
 
