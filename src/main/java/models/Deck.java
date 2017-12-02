@@ -7,7 +7,10 @@ public class Deck {
 
     public java.util.List<Card> deck = new ArrayList<>();
 
-    public Deck() {}
+    public Deck() {
+        this.buildDeck();
+        this.shuffle();
+    }
 
     public Card takeTopCard() {
         Card tempCard = getTopCard();

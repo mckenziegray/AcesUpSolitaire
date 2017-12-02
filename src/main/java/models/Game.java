@@ -17,24 +17,23 @@ public class Game {
 
     public boolean playerWon = false;
 
-    public Game(){
-        this.deck.buildDeck();
-        this.deck.shuffle();
-        this.dealFour(); }
+    public Game() {
+        this.dealFour();
+    }
 
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
         // if the deck has less than 4 cards, deal only what is left
-            for (int i = 0; i < 4; i++) {
-                if (deck.hasCards()) {
-                    table.addCardToCol(i, deck.takeTopCard());
-                }
+        for (int i = 0; i < 4; i++) {
+            if (deck.hasCards()) {
+                table.addCardToCol(i, deck.takeTopCard());
             }
-            feedbackText = "";
+        }
+        feedbackText = "";
     }
 
     public void remove(int colNumber) {
-        if( table.colHasCards(colNumber) ) {
+        if (table.colHasCards(colNumber)) {
             int jokerCol = table.existJoker();
             if (table.canRemove(colNumber) || table.getTopCardValue(colNumber) == 0) {
                 table.removeFromCol(colNumber);
@@ -42,22 +41,19 @@ public class Game {
                 score++;
             }
             // if there is a joker, remove both cards
-            else if (jokerCol != -1)
-            {
+            else if (jokerCol != -1) {
                 table.removeFromCol(colNumber);
                 table.removeFromCol(jokerCol);
                 feedbackText = "Joker used!";
                 score += 2;
-            }
-            else
+            } else
                 feedbackText = "That card can't be removed!";
-        }
-        else
+        } else
             feedbackText = "No card to remove!";
     }
 
     public void move(int colFrom) {
-        if( table.colHasCards(colFrom)) {
+        if (table.colHasCards(colFrom)) {
             int num = table.canMove();
             if (num >= 0) {
                 table.moveFromToCol(colFrom, num);
@@ -78,7 +74,7 @@ public class Game {
         this.feedbackText = "";
         this.table = new Tableau();
         this.playerLost = false;
-        if (this.deckType == 'E'){
+        if (this.deckType == 'E') {
             this.deck = new Deck();
         } else {
             this.deck = new SpanishDeck();
@@ -91,7 +87,7 @@ public class Game {
     //checks if the player has lost, meaning there are no cards in the deck and no removes or moves possible
     public void hasPlayerLost() {
         if (!deck.hasCards()) {
-            for (int i = 0; i < 4; i++){
+            for (int i = 0; i < 4; i++) {
                 if (table.canRemove(i)) {
                     return;
                 }
@@ -109,8 +105,7 @@ public class Game {
            2) Each column has no more than 1 card left
            3) The only cards remaining are Aces
      */
-    public void hasPlayerWon()
-    {
+    public void hasPlayerWon() {
         if (deck.hasCards())
             return;
         for (int i = 0; i < 4; i++) {
