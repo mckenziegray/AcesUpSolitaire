@@ -27,6 +27,15 @@ public class Card implements Serializable {
         return value;
     }
 
+    public boolean isAce() {
+        if ((suit == Suit.Oros || suit == Suit.Espadas || suit == Suit.Bastos || suit == Suit.Copas) && (value == 13))
+                return true;
+        else if (value == 14)
+                return true;
+        else
+            return false;
+    }
+
     public String toString() {
         return this.value + this.suit.toString();
     }

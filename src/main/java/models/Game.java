@@ -54,7 +54,7 @@ public class Game {
 
     public void move(int colFrom) {
         if (table.colHasCards(colFrom)) {
-            int num = table.canMove();
+            int num = table.canMove(colFrom);
             if (num >= 0) {
                 table.moveFromToCol(colFrom, num);
                 feedbackText = "";
@@ -88,13 +88,12 @@ public class Game {
     public void hasPlayerLost() {
         if (!deck.hasCards()) {
             for (int i = 0; i < 4; i++) {
-                if (table.canRemove(i)) {
+                if (table.canRemove(i))
                     return;
-                }
+                else if (table.canMove(i) >= 0)
+                    return;
             }
-            if (table.canMove() >= 0) {
-                return;
-            }
+
             this.playerLost = true;
         }
     }
