@@ -28,17 +28,6 @@ public class Tableau {
         return false;
     }
 
-    private boolean isSpanishDeck() {
-        for (int i = 0; i < 4; i++) {
-            if (colHasCards(i)) {
-                Suit suit = getTopCardSuit(i);
-                if (suit == Suit.Copas || suit == Suit.Bastos || suit == Suit.Espadas || suit == Suit.Oros)
-                    return true;
-            }
-        }
-        return false;
-    }
-
     /*returns -1 if no open column is available, -2 if the card to move is not an Ace,
         and if there is an empty column and an ace return in int 0-3 for the index of the
         empty column.
