@@ -32,9 +32,14 @@ public class Tableau {
         empty column.
     */
     public int canMove(int colFrom) {
-        if (!this.getTopCard(colFrom).isAce()) {
-                return -2;
+        Suit suit = this.getTopCardSuit(colFrom);
+        int value = this.getTopCardValue(colFrom);
+        if ((suit == Suit.Bastos || suit == Suit.Copas || suit == Suit.Espadas || suit == Suit.Oros) && value != 13) {
+            return -2;
         }
+        else if (value != 14)
+            return -2;
+
         int emptyIndex = -1;
         for(int i = 0; i < 4; i++) {
             if (!this.colHasCards(i)) {
