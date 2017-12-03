@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Tableau {
 
     public java.util.List<java.util.List<Card>> columns = new ArrayList<>(4);
-    private int colFrom;
 
     public Tableau() {
         for (int i = 0; i < 4; i++) {
@@ -49,9 +48,8 @@ public class Tableau {
     //If it is, return its column; otherwise, return -1
     public int existJoker() {
         for(int i = 0; i < 4; i++) {
-            if(this.colHasCards(i))
-                if(this.getTopCardValue(i) == 0)
-                    return i;
+            if(this.colHasCards(i) && this.getTopCardValue(i) == 0)
+                return i;
         }
         return -1;
     }
