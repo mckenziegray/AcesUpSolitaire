@@ -100,6 +100,8 @@ public class Game {
                     return;
                 else if (table.canMove(i) >= 0)
                     return;
+                else if (table.existJoker() >= 0)
+                    return;
             }
 
             this.playerLost = true;
