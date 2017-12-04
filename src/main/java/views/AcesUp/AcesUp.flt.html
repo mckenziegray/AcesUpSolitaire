@@ -228,7 +228,8 @@
         <div class="deck" id="dealButton" align="center">
             <input type="image" src="/assets/cardback.jpg"/>
         </div>
-        <div class="discard" align="center">
+        <div id="discardPile" class="discard" align="center">
+            <img src="/assets/cardback.jpg"/>
         </div>
 	<div>
             <button type="button" class="modeButton modeEnglish">
@@ -245,7 +246,6 @@
 </div>
 <script>
 	var game;
-	var discardDisplayed = false;
 
 	function display(game) {
 	    console.log(game);
@@ -275,16 +275,11 @@
  	        $('#dealButton').hide();
  	    }
 
- 	    //add discard cardback to discard pile
- 	    if(discardDisplayed == false && game.score > 0){
- 	        $('.discard').append('<img src="/assets/cardback.jpg" id="discardPile"/>');
- 	        discardDisplayed = true;
- 	    }
-
- 	    //Remove discard image on reset
- 	    if (discardDisplayed == true && game.score == 0) {
- 	        $('.discard').html('');
- 	        discardDisplayed = false;
+        if (game.score == 0) {
+ 	        $('#discardPile').hide();
+ 	        $('#dealButton').show();
+ 	    } else {
+ 	        $('#discardPile').show();
  	    }
 
  	    //check player win/lose
@@ -434,7 +429,6 @@
         	success: function(data, status){
 		    console.log("Data: " + data + "\nStatus: " + status);
             	    game = data;
-            	    $('#dealButton').show();
                     display(data);
 		},
         	contentType:"application/json; charset=utf-8",
@@ -451,6 +445,16 @@
         	success: function(data, status){
 		    console.log("Data: " + data + "\nStatus: " + status);
             	    game = data;
+            	    if (game.deckType == 'S')
+            	    {
+            	        $('#dealButton').html('<input type="image" src="/assets/spanishcard.jpg"/>');
+            	        $('#discardPile').html('<img src="/assets/spanishcard.jpg"/>');
+            	    }
+            	    else
+            	    {
+            	        $('#dealButton').html('<input type="image" src="/assets/cardback.jpg"/>');
+            	        $('#discardPile').html('<img src="/assets/cardback.jpg"/>');
+            	    }
                     display(data);
 		},
         	contentType:"application/json; charset=utf-8",
@@ -458,6 +462,7 @@
         });
 	    $('.modeButton').toggleClass("modeEnglish");
         $('.modeButton').toggleClass("modeSpanish");
+
 	});
 
 </script>
