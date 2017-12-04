@@ -85,18 +85,15 @@ public class Game {
     }
     
     public void switchDeck() {
-        this.score = 0;
-        this.feedbackText = "";
-        this.table = new Tableau();
-        this.playerLost = false;
         if (this.deckType == 'S'){
-            this.deck = new SpanishDeck();
-        } else {
             this.deck = new Deck();
+            this.deckType = 'E';
+        } else {
+            this.deck = new SpanishDeck();
+            this.deckType = 'S';
         }
-        this.deck.buildDeck();
-        this.deck.shuffle();
-        this.dealFour();
+
+        this.reset();
     }
 
     //checks if the player has lost, meaning there are no cards in the deck and no removes or moves possible

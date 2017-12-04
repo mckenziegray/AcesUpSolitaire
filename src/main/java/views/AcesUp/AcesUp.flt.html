@@ -438,7 +438,7 @@
 	$('.modeButton').click(function() {
 	    $.ajax({
             type: "POST",
-        	url: "/resetGame",
+        	url: "/switchMode",
          	data: JSON.stringify(game),
         	success: function(data, status){
 		    console.log("Data: " + data + "\nStatus: " + status);

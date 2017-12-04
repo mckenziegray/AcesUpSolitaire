@@ -64,4 +64,9 @@ public class ApplicationController {
         g.reset();
         return Results.json().render(g);
     }
+
+    public Result switchMode(Context context, Game g) {
+        g.switchDeck();
+        return Results.json().render(g);
+    }
 }
