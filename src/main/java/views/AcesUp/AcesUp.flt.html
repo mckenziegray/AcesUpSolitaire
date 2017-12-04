@@ -230,11 +230,21 @@
         </div>
         <div class="discard" align="center">
         </div>
+	<div>
+            <button type="button" class="modeButton_english">
+                <span>MODE: ENGLISH</span>
+            </button>
+            <button type="button" class="modeButton_spanish">
+                <span>MODE: SPANISH</span>
+            </button>
+        </div>    
     </div>
     <div class="modal modal-backdrop"></div>
     <div class="modal modal-window">
         <h2 class="modal-title"></h2>
-        <div class="modal-button"><button type="button" class="resetButton">RESET</button></div>
+	<div class="modal-button"><button type="button" class="resetButton">RESET</button></div>
+        <div class="modal-button"><button type="button" class="modeButton_english"></button>MODE: ENGLISH</div>
+        <div class="modal-button"><button type="button" class="modeButton_spanish"></button>MODE: SPANISH</div>
     </div>
 </div>
 <script>
@@ -428,7 +438,42 @@
         });
 	    $('.modal').hide();
 	});
+	
+	$('.modeButton_english').click(function() {
+	    $.ajax({
+            type: "POST",
+        	url: "/resetGame",
+         	data: JSON.stringify(game),
+        	success: function(data, status){
+		    console.log("Data: " + data + "\nStatus: " + status);
+            	    game = data;
+                    display(data);
+		},
+        	contentType:"application/json; charset=utf-8",
+        	dataType:"json"
+        });
+	    $('.modal').hide();
+	    $('.modeButton_english').hide();
+	    $('.modeButton_spanish').show();
+	});
 
+	$('.modeButton_spanish').click(function() {
+	    $.ajax({
+            type: "POST",
+        	url: "/resetGame",
+         	data: JSON.stringify(game),
+        	success: function(data, status){
+		    console.log("Data: " + data + "\nStatus: " + status);
+            	    game = data;
+                    display(data);
+		},
+        	contentType:"application/json; charset=utf-8",
+        	dataType:"json"
+        });
+	    $('.modal').hide();
+	    $('.modeButton_spanish').hide();
+	    $('.modeButton_english').show();
+	});
 
 </script>
 </body>
