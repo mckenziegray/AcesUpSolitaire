@@ -240,7 +240,7 @@
     <div class="modal modal-backdrop"></div>
     <div class="modal modal-window">
         <h2 class="modal-title"></h2>
-	<div class="modal-button"><button type="button" class="resetButton">RESET</button></div>
+	    <div class="modal-button"><button type="button" class="resetButton">RESET</button></div>
     </div>
 </div>
 <script>
@@ -434,11 +434,11 @@
         });
 	    $('.modal').hide();
 	});
-	
+
 	$('.modeButton').click(function() {
 	    $.ajax({
             type: "POST",
-        	url: "/resetGame",
+        	url: "/switchMode",
          	data: JSON.stringify(game),
         	success: function(data, status){
 		    console.log("Data: " + data + "\nStatus: " + status);

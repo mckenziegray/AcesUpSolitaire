@@ -81,6 +81,16 @@ public class Game {
         }
         this.dealFour();
     }
+    
+    public void switchDeck() {
+        if (this.deckType == 'S'){
+            this.deckType = 'E';
+        } else {
+            this.deckType = 'S';
+        }
+
+        this.reset();
+    }
 
     //checks if the player has lost, meaning there are no cards in the deck and no removes or moves possible
     public void hasPlayerLost() {
