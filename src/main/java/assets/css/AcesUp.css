@@ -175,11 +175,6 @@ td {
 	content:"SWITCH MODES"
 }
 
-.modeButton_spanish:hover{
-    background-color: rgba(255, 0, 0, 1);
-    color: rgba(255, 255, 255, 1);
-}
-
 .site-title {
     width: 900px;
     text-align: center;
