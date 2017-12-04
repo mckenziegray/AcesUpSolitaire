@@ -140,54 +140,42 @@ td {
     height: 150px;
 }
 
-.modeButton_english {
+.modeButton {
     position: absolute;
-    border: none;
+    bottom: 0;
     border-radius: 3px;
     margin-left: 35px;
-    margin-top: 10px;
+    margin-bottom: 10px;
     text-align: center;
     font-size: 18px;
-	border: 1px solid black;
-    background-color: rgba(255, 0, 0, 1);
-    color: rgba(255,255,255,1);
+    border: 1px solid black;
 }
 
-button.modeButton_english:hover span{
-	display:none
+.modeEnglish {
+     background-color: rgba(255, 0, 0, 1);
+     color: rgba(255,255,255,1);
 }
 
-button.modeButton_english:hover:before{
-	content:"SWITCH MODES"
-}
-
-.side_div .modeButton_english:hover{
-    background-color: rgba(255, 255, 0, 1);
-    color: rgba(0, 0, 0, 1);
-}
-
-.modeButton_spanish {
-    position: absolute;
-    border: none;
-    border-radius: 3px;
-    margin-left: 35px;
-    margin-top: 10px;
-    text-align: center;
-    font-size: 18px;
-	border: 1px solid black;
+.modeSpanish {
     background-color: rgba(255, 255, 0, 1);
     color: rgba( 0, 0, 0,1);
 }
 
-button.modeButton_spanish:hover span{
-	display:none
+.modeEnglish span:before {
+    content: "MODE: ENGLISH"
 }
 
-button.modeButton_spanish:hover:before{
+.modeSpanish span:before {
+    content: "MODE: SPANISH"
+}
+
+.modeButton:hover span {display: none;}
+
+.modeButton:hover:before{
 	content:"SWITCH MODES"
 }
 
-.side_div .modeButton_spanish:hover{
+.modeButton_spanish:hover{
     background-color: rgba(255, 0, 0, 1);
     color: rgba(255, 255, 255, 1);
 }
