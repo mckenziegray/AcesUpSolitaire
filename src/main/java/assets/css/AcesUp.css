@@ -140,6 +140,58 @@ td {
     height: 150px;
 }
 
+.modeButton_english {
+    position: absolute;
+    border: none;
+    border-radius: 3px;
+    margin-left: 35px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 18px;
+	border: 1px solid black;
+    background-color: rgba(255, 0, 0, 1);
+    color: rgba(255,255,255,1);
+}
+
+button.modeButton_english:hover span{
+	display:none
+}
+
+button.modeButton_english:hover:before{
+	content:"SWITCH MODES"
+}
+
+.side_div .modeButton_english:hover{
+    background-color: rgba(255, 255, 0, 1);
+    color: rgba(0, 0, 0, 1);
+}
+
+.modeButton_spanish {
+    position: absolute;
+    border: none;
+    border-radius: 3px;
+    margin-left: 35px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 18px;
+	border: 1px solid black;
+    background-color: rgba(255, 255, 0, 1);
+    color: rgba( 0, 0, 0,1);
+}
+
+button.modeButton_spanish:hover span{
+	display:none
+}
+
+button.modeButton_spanish:hover:before{
+	content:"SWITCH MODES"
+}
+
+.side_div .modeButton_spanish:hover{
+    background-color: rgba(255, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
 .site-title {
     width: 900px;
     text-align: center;
