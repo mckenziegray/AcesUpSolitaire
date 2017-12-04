@@ -245,7 +245,7 @@
 </div>
 <script>
 	var game;
-	var flag = true;
+	var discardDisplayed = false;
 
 	function display(game) {
 	    console.log(game);
@@ -272,12 +272,19 @@
 
  	    //removes deck cardback
  	    if (game.deck.deck.length == 0) {
- 	        $('#dealButton').html('');
+ 	        $('#dealButton').hide();
  	    }
+
  	    //add discard cardback to discard pile
- 	    if(flag == true && game.score > 0){
+ 	    if(discardDisplayed == false && game.score > 0){
  	        $('.discard').append('<img src="/assets/cardback.jpg" id="discardPile"/>');
- 	        flag = false;
+ 	        discardDisplayed = true;
+ 	    }
+
+ 	    //Remove discard image on reset
+ 	    if (discardDisplayed == true && game.score == 0) {
+ 	        $('.discard').html('');
+ 	        discardDisplayed = false;
  	    }
 
  	    //check player win/lose
@@ -427,6 +434,7 @@
         	success: function(data, status){
 		    console.log("Data: " + data + "\nStatus: " + status);
             	    game = data;
+            	    $('#dealButton').show();
                     display(data);
 		},
         	contentType:"application/json; charset=utf-8",
