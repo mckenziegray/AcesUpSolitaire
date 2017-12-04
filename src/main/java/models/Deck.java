@@ -7,6 +7,8 @@ public class Deck {
 
     public java.util.List<Card> deck = new ArrayList<>();
 
+    public boolean hasCards;
+
     public Deck() {
         this.buildDeck();
         this.shuffle();
@@ -17,8 +19,6 @@ public class Deck {
         this.removeTopCard();
         return tempCard;
     }
-
-    public boolean hasCards() { return !this.deck.isEmpty(); }
 
     protected void shuffle() {
         Collections.shuffle(deck);
@@ -31,6 +31,8 @@ public class Deck {
             deck.add(new Card(i,Suit.Diamonds));
             deck.add(new Card(i,Suit.Spades));
         }
+
+        this.hasCards = true;
     }
 
     private Card getTopCard(){
@@ -39,6 +41,8 @@ public class Deck {
 
     private void removeTopCard() {
         this.deck.remove(deck.size() - 1);
+        if (this.deck.isEmpty())
+            this.hasCards = false;
     }
 }
 

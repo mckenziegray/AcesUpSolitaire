@@ -271,7 +271,7 @@
 	    $('#feedbackText').html(game.feedbackText);
 
  	    //removes deck cardback
- 	    if (game.deck.deck.length == 0) {
+ 	    if (!game.deck.hasCards) {
  	        $('#dealButton').hide();
  	    }
 
