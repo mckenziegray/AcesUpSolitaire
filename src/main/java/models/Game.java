@@ -84,10 +84,8 @@ public class Game {
     
     public void switchDeck() {
         if (this.deckType == 'S'){
-            this.deck = new Deck();
             this.deckType = 'E';
         } else {
-            this.deck = new SpanishDeck();
             this.deckType = 'S';
         }
 
