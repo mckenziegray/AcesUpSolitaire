@@ -34,11 +34,14 @@ public class Tableau {
     public int canMove(int colFrom) {
         Suit suit = this.getTopCardSuit(colFrom);
         int value = this.getTopCardValue(colFrom);
-        if ((suit == Suit.Bastos || suit == Suit.Copas || suit == Suit.Espadas || suit == Suit.Oros) && value != 13) {
-            return -2;
+        if (suit == Suit.Bastos || suit == Suit.Copas || suit == Suit.Espadas || suit == Suit.Oros) {
+            if (value != 13)
+                return -2;
         }
-        else if (value != 14)
-            return -2;
+        else {
+            if (value != 14)
+                return -2;
+        }
 
         int emptyIndex = -1;
         for(int i = 0; i < 4; i++) {

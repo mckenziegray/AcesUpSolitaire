@@ -9,8 +9,7 @@ public class SpanishDeckTest {
     SpanishDeck deck = new SpanishDeck();
 
     @Test
-    public void testBuild(){
-        deck.buildDeck();
-        assertEquals(50, 50);
+    public void testBuildDeck(){
+        assertEquals(50, this.deck.deck.size());
     }
 }
