@@ -1,6 +1,6 @@
 <html>
 <div class="site-title">
-    <h1>Aces Up</h1>
+    <h1>Aces Up Solitaire</h1>
 </div>
 
 <link href="/assets/css/AcesUp.css" rel="stylesheet">
@@ -218,30 +218,29 @@
             <div class="score_div">
                 <span id="scoreText"></span>
             </div>
-            <button type="button" class="resetButton">RESET</button>
+            <button type="button" class="resetButton">New Game</button>
             <div class="alert_div">
                 <span id="feedbackText"></span>
             </div>
         </div>
     </div>
     <div class="side_div">
+        <div>
+            <button type="button" class="modeButton modeStandard">
+                <span></span>
+            </button>
+        </div>
         <div class="deck" id="dealButton" align="center">
             <input type="image" src="/assets/cardback.jpg"/>
         </div>
         <div id="discardPile" class="discard" align="center">
             <img src="/assets/cardback.jpg"/>
         </div>
-	<div>
-            <button type="button" class="modeButton modeEnglish">
-                <span></span>
-            </button>
-
-        </div>    
     </div>
     <div class="modal modal-backdrop"></div>
     <div class="modal modal-window">
         <h2 class="modal-title"></h2>
-	    <div class="modal-button"><button type="button" class="resetButton">RESET</button></div>
+	    <div class="modal-button"><button type="button" class="resetButton">New Game</button></div>
     </div>
 </div>
 <script>
@@ -287,7 +286,7 @@
             $('.modal-title').html('Game over!');
             $('.modal').show()
         } else if (game.playerWon) {
-            $('.modal-title').html('You\'ve WON!');
+            $('.modal-title').html('You win!');
             $('.modal').show()
         }
 	}
@@ -405,8 +404,6 @@
   	    removeCard(3);
 	});
 
-
-
 	function moveCard(colFrom){
 	    $.ajax({
             type: "POST",
@@ -460,7 +457,7 @@
         	contentType:"application/json; charset=utf-8",
         	dataType:"json"
         });
-	    $('.modeButton').toggleClass("modeEnglish");
+	    $('.modeButton').toggleClass("modeStandard");
         $('.modeButton').toggleClass("modeSpanish");
 
 	});
