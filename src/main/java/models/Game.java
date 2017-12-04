@@ -79,7 +79,6 @@ public class Game {
         } else {
             this.deck = new SpanishDeck();
         }
-        this.deck.shuffle();
         this.dealFour();
     }
     
