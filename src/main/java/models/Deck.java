@@ -11,6 +11,7 @@ public class Deck {
 
     public Deck() {
         this.buildDeck();
+        this.hasCards = true;
         this.shuffle();
     }
 
@@ -31,8 +32,6 @@ public class Deck {
             deck.add(new Card(i,Suit.Diamonds));
             deck.add(new Card(i,Suit.Spades));
         }
-
-        this.hasCards = true;
     }
 
     private Card getTopCard(){
