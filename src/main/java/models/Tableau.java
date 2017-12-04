@@ -27,37 +27,24 @@ public class Tableau {
         return false;
     }
 
-    private boolean isSpanishDeck() {
-        for (int i = 0; i < 4; i++) {
-            if (colHasCards(i)) {
-                Suit suit = getTopCardSuit(i);
-                if (suit == Suit.Copas || suit == Suit.Bastos || suit == Suit.Espadas || suit == Suit.Oros)
-                    return true;
-            }
-        }
-        return false;
-    }
-
-    /*returns -1 if no open column is available, -2 if no aces to move,
+    /*returns -1 if no open column is available, -2 if the card to move is not an Ace,
         and if there is an empty column and an ace return in int 0-3 for the index of the
         empty column.
     */
-    public int canMove() {
-        boolean existAce = false;
+    public int canMove(int colFrom) {
+        Suit suit = this.getTopCardSuit(colFrom);
+        int value = this.getTopCardValue(colFrom);
+        if ((suit == Suit.Bastos || suit == Suit.Copas || suit == Suit.Espadas || suit == Suit.Oros) && value != 13) {
+            return -2;
+        }
+        else if (value != 14)
+            return -2;
+
         int emptyIndex = -1;
         for(int i = 0; i < 4; i++) {
             if (!this.colHasCards(i)) {
                 emptyIndex = i;
-            } else {
-                if ((!this.isSpanishDeck() && this.getTopCardValue(i) == 14) || (this.isSpanishDeck() && this.getTopCardValue(i) == 13)) {
-                    existAce = true;
-                }
             }
-        }
-        if (emptyIndex == -1) {
-            return -1;
-        } else if (!existAce) {
-            return -2;
         }
         return emptyIndex;
     }
@@ -66,9 +53,8 @@ public class Tableau {
     //If it is, return its column; otherwise, return -1
     public int existJoker() {
         for(int i = 0; i < 4; i++) {
-            if(this.getTopCardValue(i) == 0) {
+            if(this.colHasCards(i) && this.getTopCardValue(i) == 0)
                 return i;
-            }
         }
         return -1;
     }
