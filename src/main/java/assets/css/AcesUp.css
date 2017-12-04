@@ -140,6 +140,41 @@ td {
     height: 150px;
 }
 
+.modeButton {
+    position: absolute;
+    bottom: 0;
+    border-radius: 3px;
+    margin-left: 35px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid black;
+}
+
+.modeEnglish {
+     background-color: rgba(255, 0, 0, 1);
+     color: rgba(255,255,255,1);
+}
+
+.modeSpanish {
+    background-color: rgba(255, 255, 0, 1);
+    color: rgba( 0, 0, 0,1);
+}
+
+.modeEnglish span:before {
+    content: "MODE: ENGLISH"
+}
+
+.modeSpanish span:before {
+    content: "MODE: SPANISH"
+}
+
+.modeButton:hover span {display: none;}
+
+.modeButton:hover:before{
+	content:"SWITCH MODES"
+}
+
 .site-title {
     width: 900px;
     text-align: center;
