@@ -11,7 +11,7 @@ public class Game {
 
     public int score = 0;
 
-    public char deckType = 'E';
+    public char deckType = 'F';
 
     public boolean playerLost = false;
 
@@ -68,13 +68,13 @@ public class Game {
         }
     }
 
-    //deckType = 'E' for english and 'S' for spanish cards
+    //deckType = 'F' for French (standard) and 'S' for Spanish cards
     public void reset() {
         this.score = 0;
         this.feedbackText = "";
         this.table = new Tableau();
         this.playerLost = false;
-        if (this.deckType == 'E') {
+        if (this.deckType == 'F') {
             this.deck = new Deck();
         } else {
             this.deck = new SpanishDeck();
@@ -84,7 +84,7 @@ public class Game {
     
     public void switchDeck() {
         if (this.deckType == 'S'){
-            this.deckType = 'E';
+            this.deckType = 'F';
         } else {
             this.deckType = 'S';
         }

@@ -76,61 +76,6 @@ td {
     text-align: center;
 }
 
-.modeButton_english {
-    position: absolute;
-    left: 0px;
-    margin-left: 3px;
-    border: none;
-    border-radius: 3px;
-    text-align: center;
-    font-size: 18px;
-	border: 1px solid black;
-    background-color: rgba(255, 0, 0, 1);
-    color: rgba(255,255,255,1);
-}
-
-button.modeButton_english:hover span{
-	display:none
-}
-
-button.modeButton_english:hover:before{
-	content:"SWITCH MODES"
-}
-
-.info_div .modeButton_english:hover{
-    background-color: rgba(255, 255, 0, 1);
-    color: rgba(0, 0, 0, 1);
-}
-
-
-.modeButton_spanish {
-    position: absolute;
-    left: 0px;
-    margin-left: 3px;
-    border: none;
-    border-radius: 3px;
-    text-align: center;
-    font-size: 18px;
-	border: 1px solid black;
-    background-color: rgba(255, 255, 0, 1);
-    color: rgba(0, 0, 0, 1);
-    background-color: rgba(255, 255, 0, 1);
-    color: rgba(0, 0, 0, 1);
-}
-
-button.modeButton_spanish:hover span{
-	display:none
-}
-
-button.modeButton_spanish:hover:before{
-	content:"SWITCH MODES"
-}
-
-.info_div .modeButton_spanish:hover {
-    background-color: rgba(255, 0, 0, 1);
-    color: rgba(255,255,255,1)
-}
-
 .score_div {
     position: absolute;
     left: 0;
@@ -176,9 +121,9 @@ button.modeButton_spanish:hover:before{
 .deck {
     position: absolute;
     padding: 5px;
-    top: 50px;
-    left: 52px;
     height: 150px;
+    top: 75px;
+    left: 53px;
     width: 100px;
 }
 
@@ -189,24 +134,24 @@ button.modeButton_spanish:hover:before{
 
 .discard {
     position: absolute;
-    bottom: 50px;
-    left: 57px;
-    width: 100px;
+    padding: 5px;
+    bottom: 75px;
+    left: 53px;
     height: 150px;
+    width: 100px;
 }
 
 .modeButton {
-    position: absolute;
-    bottom: 0;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
     border-radius: 3px;
-    margin-left: 35px;
-    margin-bottom: 10px;
     text-align: center;
     font-size: 18px;
     border: 1px solid black;
 }
 
-.modeEnglish {
+.modeStandard {
      background-color: rgba(255, 0, 0, 1);
      color: rgba(255,255,255,1);
 }
@@ -216,18 +161,18 @@ button.modeButton_spanish:hover:before{
     color: rgba( 0, 0, 0,1);
 }
 
-.modeEnglish span:before {
-    content: "MODE: ENGLISH"
+.modeStandard span:before {
+    content: "Standard"
 }
 
 .modeSpanish span:before {
-    content: "MODE: SPANISH"
+    content: "Spanish"
 }
 
 .modeButton:hover span {display: none;}
 
 .modeButton:hover:before{
-	content:"SWITCH MODES"
+	content:"Switch Deck"
 }
 
 .site-title {
@@ -263,7 +208,7 @@ button.modeButton_spanish:hover:before{
 }
 
 .modal .resetButton {
-    left: 165px;
+    left: 145px;
     font-size: 20px;
     color: rgba(0,0,0,1);
     background-color: rgba(200,200,200,1);
