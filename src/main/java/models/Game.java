@@ -25,7 +25,7 @@ public class Game {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
         // if the deck has less than 4 cards, deal only what is left
         for (int i = 0; i < 4; i++) {
-            if (deck.hasCards()) {
+            if (deck.hasCards) {
                 table.addCardToCol(i, deck.takeTopCard());
             }
         }
@@ -94,11 +94,13 @@ public class Game {
 
     //checks if the player has lost, meaning there are no cards in the deck and no removes or moves possible
     public void hasPlayerLost() {
-        if (!deck.hasCards()) {
+        if (!deck.hasCards) {
             for (int i = 0; i < 4; i++) {
                 if (table.canRemove(i))
                     return;
                 else if (table.canMove(i) >= 0)
+                    return;
+                else if (table.existJoker() >= 0)
                     return;
             }
 
@@ -113,7 +115,7 @@ public class Game {
            3) The only cards remaining are Aces
      */
     public void hasPlayerWon() {
-        if (deck.hasCards())
+        if (deck.hasCards)
             return;
         for (int i = 0; i < 4; i++) {
             if (table.cardCount(i) != 1)
